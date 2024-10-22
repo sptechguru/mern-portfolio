@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Bio } from "../../data/constants";
 import {
   FacebookRounded,
   Instagram,
   LinkedIn,
   Twitter,
 } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 const FooterContainer = styled.div`
   width: 100%;
@@ -81,10 +81,14 @@ const Copyright = styled.p`
 `;
 
 const Footer = () => {
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  // const [loader, setLoading] = useState(false);
+  const {intro} = portfolioData;
+  const {name,github,insta,linkedin,facebook} = intro;
   return (
     <FooterContainer>
       <FooterWrapper>
-        <Logo>Santosh Pal</Logo>
+        <Logo>{name}</Logo>
         <Nav>
           <NavLink href="#About">About</NavLink>
           <NavLink href="#Skills">Skills</NavLink>
@@ -93,20 +97,20 @@ const Footer = () => {
           <NavLink href="#Education">Education</NavLink>
         </Nav>
         <SocialMediaIcons>
-          <SocialMediaIcon href={Bio.facebook} target="display">
+          <SocialMediaIcon href={facebook} target="display">
             <FacebookRounded />
           </SocialMediaIcon>
-          <SocialMediaIcon href={Bio.twitter} target="display">
+          {/* <SocialMediaIcon href={twitter} target="display">
             <Twitter />
-          </SocialMediaIcon>
-          <SocialMediaIcon href={Bio.linkedin} target="display">
+          </SocialMediaIcon> */}
+          <SocialMediaIcon href={linkedin} target="display">
             <LinkedIn />
           </SocialMediaIcon>
-          <SocialMediaIcon href={Bio.insta} target="display">
+          <SocialMediaIcon href={insta} target="display">
             <Instagram />
           </SocialMediaIcon>
         </SocialMediaIcons>
-        <Copyright>&copy; 2024 Santosh Pal. All rights reserved.</Copyright>
+        <Copyright>&copy; 2024 {name}. All rights reserved.</Copyright>
       </FooterWrapper>
     </FooterContainer>
   );

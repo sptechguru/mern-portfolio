@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link as LinkR } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
-import { Bio } from "../data/constants";
+// import { Bio } from "../data/constants";
 import { MenuRounded } from "@mui/icons-material";
+import GitHubIcon from '@mui/icons-material/GitHub';
+
 
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -78,7 +80,9 @@ const GithubButton = styled.a`
   justify-content: center;
   display: flex;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 100%;
+  width:35px;
+  height:41px !important;
   cursor: pointer;
   padding: 10px 20px;
   font-size: 16px;
@@ -164,28 +168,23 @@ const Navbar = () => {
               Education
             </NavLink>
             <GithubButton
-              href={Bio.github}
+              href='https://github.com/sptechguru'
               target="_Blank"
               style={{
                 background: theme.primary,
                 color: theme.text_primary,
               }}
             >
-              Github Profile
+               <GitHubIcon />
             </GithubButton>
           </MobileMenu>
         )}
 
         <ButtonContainer>
-          <GithubButton href={Bio.github} target="_Blank">
-            Github Profile
+          <GithubButton href='https://github.com/sptechguru' target="_Blank">
+           <GitHubIcon />
           </GithubButton>
         </ButtonContainer>
-
-          {/* <GithubButton>
-          <NavLink to="/weather">Weather</NavLink>
-          </GithubButton> */}
-
       </NavbarContainer>
     </Nav>
   );

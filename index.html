@@ -17,6 +17,46 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+      <!-- whats app chat boat -->
+   <script>
+    var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?68064';
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url;
+    var options = {
+       "enabled": true,
+       "chatButtonSetting": {
+          "backgroundColor": "#4dc247",
+          "ctaText": "",
+          "borderRadius": "25",
+          "marginLeft": "0",
+          "marginBottom": "50",
+          "marginRight": "50",
+          "position": "right"
+       },
+       "brandSetting": {
+          "brandName": "SANTOSH PAL ",
+          "brandSubTitle": "",
+          "brandImg": "https://avatars3.githubusercontent.com/u/58684635?s=460&u=f7af97454174f4f3a0c1b2db9b79cf1206b9a424&v=4",
+          "welcomeText": "Hi, I am Santosh Pal",
+          "messageText": "Thank you for Contracting Santosh Pal! Please let us know how can we help You ? ",
+          "backgroundColor": "#4dc247",
+          "ctaText": "Start Chat",
+          "borderRadius": "25",
+          "autoShow": false,
+          "phoneNumber": "+91 8839102688"
+       }
+    };
+    s.onload = function () {
+       CreateWhatsappChatWidget(options);
+    };
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+ </script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> -->
-  </body>
+  
+   </body>
 </html>

@@ -9,7 +9,6 @@ export const Bio = {
   github: "https://github.com/sptechguru",
   resume: "https://drive.google.com/file/d/1BvXNLyw-7kMfgIr6sqchcYIEyb8Bmgfq/view",
   linkedin: "https://www.linkedin.com/in/santosh-pal-6a171a1a3/",
-  twitter: "https://twitter.com/RishavChanda",
   insta: "https://www.instagram.com/",
   facebook: "https://www.facebook.com/",
 };

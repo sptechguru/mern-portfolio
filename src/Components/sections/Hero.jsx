@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Bio } from "../../data/constants";
 import Typewriter from "typewriter-effect";
-import HeroImg from "../../images/HeroImage.jpg";
 import HeroBgAnimation from "../HeroBgAnimation";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import {
-  headContainerAnimation,
-  headContentAnimation,
-  headTextAnimation,
-} from "../../utils/motion";
+import { headContainerAnimation,headContentAnimation,headTextAnimation } from "../../utils/motion";
 import StarCanvas from "../canvas/Stars";
 import { useSelector } from "react-redux";
+import Spin_loader from "../Spin-loader";
+
 
 const HeroContainer = styled.div`
   display: flex;
@@ -219,16 +215,16 @@ const HeroBg = styled.div`
 const Hero = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
   // const [loader, setLoading] = useState(false);
-  const intro = portfolioData;
-  // const {name,description} = intro;
-  useEffect(() => {
-    console.log("hero Intro data ", intro)
-  }, []);
+  const {intro} = portfolioData;
+  const {name,description,roles,resume} = intro;
+  
+  // useEffect(() => {
+  //   console.log("hero Intro data ", intro);
+  // }, []);
 
   return (
-
     <div id="About">
-    {loading ? <span>Loader...</span> :null}
+      {loading ? <Spin_loader /> : null}
       <HeroContainer>
         <HeroBg>
           <StarCanvas />
@@ -239,14 +235,14 @@ const Hero = () => {
             <HeroLeftContainer>
               <motion.div {...headTextAnimation}>
                 <Title>
-                  Hi, I am <br /> {Bio.name}
+                  Hi, I am <br /> {name || 'NA'}
                 </Title>
                 <TextLoop>
                   I am a
                   <Span>
                     <Typewriter
                       options={{
-                        strings: Bio.roles,
+                        strings: roles,
                         autoStart: true,
                         loop: true,
                       }}
@@ -256,17 +252,20 @@ const Hero = () => {
               </motion.div>
 
               <motion.div {...headContentAnimation}>
-                <SubTitle>{Bio.description}</SubTitle>
+                <SubTitle>{description  || 'NA'}</SubTitle>
               </motion.div>
 
-              <ResumeButton href={Bio.resume} target="_blank">
-                Check Resume
+              <ResumeButton href={resume} target="_blank">
+               Resume
               </ResumeButton>
             </HeroLeftContainer>
             <HeroRightContainer>
               <motion.div {...headContentAnimation}>
                 <Tilt>
-                  <Img src="https://avatars3.githubusercontent.com/u/58684635?s=460&u=f7af97454174f4f3a0c1b2db9b79cf1206b9a424&v=4" alt="Santosh Pal" />
+                  <Img
+                    src="https://avatars3.githubusercontent.com/u/58684635?s=460&u=f7af97454174f4f3a0c1b2db9b79cf1206b9a424&v=4"
+                    alt="Santosh Pal"
+                  />
                 </Tilt>
               </motion.div>
             </HeroRightContainer>

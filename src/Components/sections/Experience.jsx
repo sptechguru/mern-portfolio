@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { VerticalTimeline } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import styled from "styled-components";
-import { experiences } from "../../data/constants";
 import ExperienceCard from "../cards/ExperienceCard";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -50,6 +50,13 @@ const Desc = styled.div`
 `;
 
 const Experience = () => {
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { experience } = portfolioData;
+  
+  // useEffect(() => {
+  //   console.log("experiences data ", experience);
+  // }, []);
+
   return (
     <Container id="Experience">
       <Wrapper>
@@ -64,7 +71,7 @@ const Experience = () => {
         </Desc>
 
         <VerticalTimeline>
-          {experiences.map((experience, index) => (
+          {experience.map((experience, index) => (
             <ExperienceCard
               key={`experience-${index}`}
               experience={experience}

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { skills } from "../../data/constants";
 import { Tilt } from "react-tilt";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -116,6 +116,14 @@ const SkillImage = styled.img`
 `;
 
 const Skills = () => {
+
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  const {skills} = portfolioData;
+
+  // useEffect(() => {
+  //   console.log("Skills data ", skills);
+  // },[]);
+
   return (
     <Container id="Skills">
       <Wrapper>
