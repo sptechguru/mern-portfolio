@@ -46,7 +46,7 @@ const Desc = styled.div`
 `;
 
 const ContactForm = styled.div`
-  width: 95%;
+  width: 50%;
   max-width: 600px;
   display: flex;
   flex-direction: column;
@@ -106,6 +106,7 @@ const ContactButton = styled.input`
 
 const Contact = () => {
   const form = useRef();
+
   const handelSubmit = (e) => {
     e.preventDefault();
     emailjs
@@ -136,14 +137,24 @@ const Contact = () => {
         >
           Feel free to reach out to me for any questions or opportunities!
         </Desc>
-        <ContactForm onSubmit={handelSubmit}>
-          <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
-          <ContactButton type="submit" value="Send" />
-        </ContactForm>
+      
+            <ContactForm onSubmit={handelSubmit}>
+              <ContactTitle>Email Me 🚀</ContactTitle>
+              <ContactInput placeholder="Your Email" name="from_email" />
+              <ContactInput placeholder="Your Name" name="from_name" />
+              <ContactInput placeholder="Subject" name="subject" />
+              <ContactInputMessage placeholder="Message" name="message" rows={4} />
+              <ContactButton type="submit" value="Send" />
+            </ContactForm>
+
+
+          <div class="col-md-6 col-lg-6 col-12 animated zoomInLeft">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.489906160832!2d75.8437058145021!3d22.747193385093237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39630278eb3225dd%3A0xf268f1d9850ac99c!2s27%2C+Kushwah+Nagar+Main+Rd%2C+Maharana+Pratap+Nagar%2C+Indore%2C+Madhya+Pradesh+452015!5e0!3m2!1sen!2sin!4v1555854647282!5m2!1sen!2sin"
+              width="100%" height="400" frameborder="0"
+              allowfullscreen></iframe>
+          </div>
+
       </Wrapper>
     </Container>
   );

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { projects } from "../../data/constants";
+// import { projects } from "../../data/constants";
 import ProjectCard from "../cards/ProjectCard";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -92,6 +93,12 @@ const CardContainer = styled.div`
 
 const Projects = () => {
   const [toggle, setToggle] = useState("all");
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { projects } = portfolioData;
+  // useEffect(() => {
+  //   console.log("projects data data ", projects);
+  // }, []);
+
   return (
     <Container id="Projects">
       <Wrapper>
@@ -120,12 +127,7 @@ const Projects = () => {
             WEB APP"S
           </ToggleButton>
           <Divider />
-          <ToggleButton
-            active={toggle === "android app"}
-            onClick={() => setToggle("android app")}
-          >
-            ANDROID APP'S
-          </ToggleButton>
+    
           <Divider />
           <ToggleButton
             active={toggle === "machine learning"}

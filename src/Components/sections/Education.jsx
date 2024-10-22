@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { VerticalTimeline } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import styled from "styled-components";
-import { education } from "../../data/constants";
+// import { education } from "../../data/constants";
 import EducationCard from "../cards/EducationCard";
 import EarthCanvas from "../canvas/Earth";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -50,6 +51,12 @@ const Desc = styled.div`
 `;
 
 const Education = () => {
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { education } = portfolioData;
+
+  // useEffect(() => {
+  //   console.log("Educations data ", education);
+  // }, []);
   return (
     <Container id="Education">
       <Wrapper>
