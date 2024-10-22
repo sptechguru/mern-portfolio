@@ -1,5 +1,5 @@
 import styled, { ThemeProvider } from "styled-components";
-import { darkTheme,lightTheme } from "./utils/Themes";
+import { darkTheme, lightTheme } from "./utils/Themes";
 import { BrowserRouter } from "react-router-dom";
 import Hero from "./components/sections/Hero";
 import Skills from "./components/sections/Skills";
@@ -10,6 +10,11 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 import Navbar from "./Components/Navbar";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { PORTFOLIOPOINTS } from "./Api/Endpoints";
+import { useDispatch, useSelector } from "react-redux";
+import { SetPortfolioData } from "./redux/rootSlice";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -34,13 +39,40 @@ const Wrapper = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
 `;
 
-function App() {
+const App = () => {
+
+  const dispatch = useDispatch();
+  const { loading, portfolioData } = useSelector((state) => state.root);
+
+  useEffect(() => {
+    getAllPortFolio();
+  }, []);
+
+  useEffect(() => {
+    console.log("loading app.js portfolio", portfolioData)
+  }, [portfolioData]);
+
+  const getAllPortFolio = async () => {
+    try {
+      const response = await axios.get(`${PORTFOLIOPOINTS.ApiBaseUrl}get-portfolio`);
+      console.log('portfolio datas....', response.data);
+      dispatch(SetPortfolioData(response.data));
+    } catch (error) {
+      setError(error.response.data.message);
+      console.log('401 error ......', error.response.data.message)
+    }
+  }
+
   return (
+   <>
     <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
+
+      { loading ? <span>Loader...</span> :null}
+
         <Navbar />
         <Body>
-          {/* <StartCanvas /> */}
+          <StartCanvas />
           <div>
             <Hero />
             <Wrapper>
@@ -56,7 +88,8 @@ function App() {
           </div>
         </Body>
       </BrowserRouter>
-     </ThemeProvider>
+    </ThemeProvider>
+   </>
   );
 }
 

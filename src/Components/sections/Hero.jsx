@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Bio } from "../../data/constants";
 import Typewriter from "typewriter-effect";
@@ -12,6 +12,7 @@ import {
   headTextAnimation,
 } from "../../utils/motion";
 import StarCanvas from "../canvas/Stars";
+import { useSelector } from "react-redux";
 
 const HeroContainer = styled.div`
   display: flex;
@@ -216,15 +217,23 @@ const HeroBg = styled.div`
 `;
 
 const Hero = () => {
-  return (
-    <div id="About">
-      <HeroContainer>
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  // const [loader, setLoading] = useState(false);
+  const intro = portfolioData;
+  // const {name,description} = intro;
+  useEffect(() => {
+    console.log("hero Intro data ", intro)
+  }, []);
 
+  return (
+
+    <div id="About">
+    {loading ? <span>Loader...</span> :null}
+      <HeroContainer>
         <HeroBg>
           <StarCanvas />
           <HeroBgAnimation />
         </HeroBg>
-
         <motion.div {...headContainerAnimation}>
           <HeroInnerContainer>
             <HeroLeftContainer>
