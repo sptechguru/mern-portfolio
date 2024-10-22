@@ -117,23 +117,7 @@ const Projects = () => {
             active={toggle === "all"}
             onClick={() => setToggle("all")}
           >
-            ALL
-          </ToggleButton>
-          <Divider />
-          <ToggleButton
-            active={toggle === "web app"}
-            onClick={() => setToggle("web app")}
-          >
-            WEB APP"S
-          </ToggleButton>
-          <Divider />
-    
-          <Divider />
-          <ToggleButton
-            active={toggle === "machine learning"}
-            onClick={() => setToggle("machine learning")}
-          >
-            MACHINE LEARNING
+            ALL Projects
           </ToggleButton>
         </ToggleButtonGroup>
 

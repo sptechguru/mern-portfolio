@@ -136,7 +136,7 @@ const Navbar = () => {
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/"><spna className="text-primary">S</spna><spna className="text-white">P</spna></NavLogo>
+        <NavLogo to="/"><spna className="text-primary">S</spna><spna className="text-white">.P</spna></NavLogo>
 
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
           <MenuRounded style={{ color: "inherit" }} />

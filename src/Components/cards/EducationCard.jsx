@@ -108,7 +108,7 @@ const EducationCard = ({ education }) => {
         </Body>
       </Top>
       <Grade>
-        <b>Grade : </b>
+        <b>Percent : </b>
         {education?.grade}
       </Grade>
       <Description>

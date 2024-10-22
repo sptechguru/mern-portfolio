@@ -72,9 +72,9 @@ const HeroRightContainer = styled.div`
 
 const Title = styled.div`
   font-weight: 700;
-  font-size: 50px;
+  font-size: 45px;
   color: ${({ theme }) => theme.text_primary};
-  line-height: 68px;
+  line-height: 60px;
 
   @media (max-width: 960px) {
     text-align: center;
@@ -216,7 +216,7 @@ const Hero = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
   // const [loader, setLoading] = useState(false);
   const {intro} = portfolioData;
-  const {name,description,roles,resume} = intro;
+  const {name,description,roles,resume,profile_url} = intro;
   
   // useEffect(() => {
   //   console.log("hero Intro data ", intro);
@@ -263,7 +263,7 @@ const Hero = () => {
               <motion.div {...headContentAnimation}>
                 <Tilt>
                   <Img
-                    src="https://avatars3.githubusercontent.com/u/58684635?s=460&u=f7af97454174f4f3a0c1b2db9b79cf1206b9a424&v=4"
+                    src={profile_url}
                     alt="Santosh Pal"
                   />
                 </Tilt>
