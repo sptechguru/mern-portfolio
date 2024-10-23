@@ -1,0 +1,13 @@
+
+
+input {
+    height:40px;
+    border 1px solid black;
+    width:100% !important;
+    padding-left:20px;
+}
+
+:where(.css-dev-only-do-not-override-ni1kz0).ant-tabs-left >.ant-tabs-content-holder >.ant-tabs-content>.ant-tabs-tabpane, :where(.css-dev-only-do-not-override-ni1kz0).ant-tabs-left >div>.ant-tabs-content-holder >.ant-tabs-content>.ant-tabs-tabpane {
+    padding-left: 2% !important;
+}
+

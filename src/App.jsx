@@ -8,6 +8,8 @@ import { hideLoading, SetPortfolioData, showLoading } from "./redux/rootSlice";
 import Home from "./Components/Home";
 import Weather from "./Components/Weather";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Admin from "./Components/sections/Admin";
+// import "antd/dist/antd.css";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,6 +44,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />}> </Route>
             <Route path="/weather" element={<Weather />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
