@@ -230,6 +230,7 @@ const Hero = () => {
           <StarCanvas />
           <HeroBgAnimation />
         </HeroBg>
+        
         <motion.div {...headContainerAnimation}>
           <HeroInnerContainer>
             <HeroLeftContainer>

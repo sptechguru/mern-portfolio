@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// import { projects } from "../../data/constants";
+import { baseLiveProject } from "../../data/constants";
 import ProjectCard from "../cards/ProjectCard";
 import { useSelector } from "react-redux";
 
@@ -92,34 +92,52 @@ const CardContainer = styled.div`
 `;
 
 const Projects = () => {
+  const [currentPage, setCurrentPage] = useState("");
+
+  // const projectUrl = [
+  //   { name: "Node js Crud Api", url: "https://sptech-api-v1.onrender.com/" },
+  //   { name: "React js Movie", url: "https://sptechreact.netlify.app/" },
+  //   {
+  //     name: "React js Weather",
+  //     url: "https://sptectreactjs-weather.netlify.app/",
+  //   },
+  //   { name: "Angular 18", url: "https://sptechguru.github.io/Angular18/login" },
+  //   { name: "E-commerce", url: "https://onlineguru.pythonanywhere.com/shop/" },
+  //   { name: "python", url: "https://sani.pythonanywhere.com/" },
+  // ];
+
+  const handleButtonClick = (url) => {
+    setCurrentPage(url);
+    window.open(url, "_blank");
+  };
   const [toggle, setToggle] = useState("all");
   const { loading, portfolioData } = useSelector((state) => state.root);
   const { projects } = portfolioData;
-  // useEffect(() => {
-  //   console.log("projects data data ", projects);
-  // }, []);
 
   return (
     <Container id="Projects">
       <Wrapper>
         <Title>Projects</Title>
+
+        <div className="button-container">
+          {baseLiveProject.map((page, index) => (
+            <button
+              key={index}
+              onClick={() => handleButtonClick(page.url)}
+              className="styled-button"
+            >
+              {page.name}
+            </button>
+          ))}
+        </div>
         <Desc
           style={{
             marginBottom: "40px",
           }}
         >
-          I have worked on a wide range of projects. From web apps to android
-          apps. Here are some of my projects.
+          Versatile Developer 🚀 Worked on diverse projects including LMS-MSM
+          Unify, GCON, Naukari Job Portal, and E-commerce platforms
         </Desc>
-
-        <ToggleButtonGroup>
-          <ToggleButton
-            active={toggle === "all"}
-            onClick={() => setToggle("all")}
-          >
-            ALL Projects
-          </ToggleButton>
-        </ToggleButtonGroup>
 
         <CardContainer>
           {toggle === "all" &&

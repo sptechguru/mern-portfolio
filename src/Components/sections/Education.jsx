@@ -66,8 +66,7 @@ const Education = () => {
             marginBottom: "40px",
           }}
         >
-          My education has been a journey of self-discovery and growth. My
-          educational details are as follows.
+          Lifelong Learner 🎓 My education has been a journey of self-discovery and growth, shaping my technical expertise and problem-solving skills.
         </Desc>
 
         <VerticalTimeline>
