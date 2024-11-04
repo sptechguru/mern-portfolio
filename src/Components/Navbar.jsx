@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link as LinkR } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
 // import { Bio } from "../data/constants";
-import { MenuRounded } from "@mui/icons-material";
+import { LinkedIn, MenuRounded } from "@mui/icons-material";
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 
@@ -75,8 +75,8 @@ const ButtonContainer = styled.div`
 `;
 
 const GithubButton = styled.a`
-  border: 1px solid ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.primary};
+  border: 1px solid #4dc247;
+  color: #4dc247;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -87,10 +87,10 @@ const GithubButton = styled.a`
   padding: 10px 20px;
   font-size: 16px;
   font-weight: 500;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.3s ease-in-out;
   text-decoration: none;
   &:hover {
-    background: ${({ theme }) => theme.primary};
+    background: #4dc247;
     color: ${({ theme }) => theme.text_primary};
   }
 `;
@@ -136,7 +136,7 @@ const Navbar = () => {
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/"><spna className="text-primary">S</spna><spna className="text-white">.P</spna></NavLogo>
+        <NavLogo to="/">  <spna className="text-primary">S</spna><spna className="text-white">.P</spna></NavLogo>
 
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
           <MenuRounded style={{ color: "inherit" }} />
@@ -175,14 +175,26 @@ const Navbar = () => {
                 color: theme.text_primary,
               }}
             >
-               <GitHubIcon />
+              <GitHubIcon />
             </GithubButton>
+            
+          <GithubButton className="mx-2" href='https://www.linkedin.com/in/santosh-pal-6a171a1a3/' target="_Blank"  
+           style={{
+                background: theme.primary,
+                color: theme.text_primary,
+              }}>
+           <LinkedIn />
+          </GithubButton>
           </MobileMenu>
         )}
 
         <ButtonContainer>
           <GithubButton href='https://github.com/sptechguru' target="_Blank">
            <GitHubIcon />
+          </GithubButton>
+
+          <GithubButton className="mx-2" href='https://www.linkedin.com/in/santosh-pal-6a171a1a3/' target="_Blank">
+           <LinkedIn />
           </GithubButton>
         </ButtonContainer>
       </NavbarContainer>
