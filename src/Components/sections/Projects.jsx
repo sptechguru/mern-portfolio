@@ -94,18 +94,6 @@ const CardContainer = styled.div`
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState("");
 
-  // const projectUrl = [
-  //   { name: "Node js Crud Api", url: "https://sptech-api-v1.onrender.com/" },
-  //   { name: "React js Movie", url: "https://sptechreact.netlify.app/" },
-  //   {
-  //     name: "React js Weather",
-  //     url: "https://sptectreactjs-weather.netlify.app/",
-  //   },
-  //   { name: "Angular 18", url: "https://sptechguru.github.io/Angular18/login" },
-  //   { name: "E-commerce", url: "https://onlineguru.pythonanywhere.com/shop/" },
-  //   { name: "python", url: "https://sani.pythonanywhere.com/" },
-  // ];
-
   const handleButtonClick = (url) => {
     setCurrentPage(url);
     window.open(url, "_blank");
