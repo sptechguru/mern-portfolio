@@ -75,8 +75,8 @@ const ButtonContainer = styled.div`
 `;
 
 const GithubButton = styled.a`
-  border: 1px solid #4dc247;
-  color: #4dc247;
+  border: 1px solid #854CE6;
+  color: #854CE6;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -90,7 +90,7 @@ const GithubButton = styled.a`
   transition: all 0.3s ease-in-out;
   text-decoration: none;
   &:hover {
-    background: #4dc247;
+    background: #854CE6;
     color: ${({ theme }) => theme.text_primary};
   }
 `;
@@ -133,17 +133,20 @@ const MobileMenu = styled.ul`
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
+  const logo = {
+    color: '#854CE6',
+  };
+
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/">  <spna className="text-primary">S</spna><spna className="text-white">.P</spna></NavLogo>
-
+        <NavLogo to="/home">  <spna  style={logo}>S</spna><spna className="text-white">.P</spna></NavLogo>
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
           <MenuRounded style={{ color: "inherit" }} />
         </MobileIcon>
 
         <NavItems>
-          <NavLink href="#About">About</NavLink>
+          <NavLink href="#About">Home</NavLink>
           <NavLink href="#Skills">Skills</NavLink>
           <NavLink href="#Experience">Experience</NavLink>
           <NavLink href="#Projects">Projects</NavLink>
@@ -153,8 +156,7 @@ const Navbar = () => {
         {isOpen && (
           <MobileMenu isOpen={isOpen}>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#About">
-              About
-            </NavLink>
+            Home            </NavLink>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Skills">
               Skills
             </NavLink>

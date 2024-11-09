@@ -178,3 +178,26 @@
     font-size: 12px;
   }
 }
+
+
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+/* Style the track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+  border-radius: 5px;
+}
+
+/* Style the thumb */
+::-webkit-scrollbar-thumb {
+  background: #854CE6; /* Color of the scrollbar thumb */
+  border-radius: 5px;
+}
+
+/* Hover effect for the thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #854CE6;
+}
