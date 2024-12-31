@@ -20,7 +20,7 @@ const AdminProjects = () => {
 
 
   useEffect(() => {
-    console.log(" Admin Projects data", portfolioData.projects);
+    // console.log(" Admin Projects data", portfolioData.projects);
   }, []);
 
   const onFinish = async (values) => {
@@ -28,8 +28,6 @@ const AdminProjects = () => {
       dispatch(showLoading());
       let response;
       if (selectedItemEdit) {
-        alert("Update Called");
-        console.log("on Update called", values);
         response = await axios.post(
           `${PORTFOLIOPOINTS.ApiBaseUrl}update-project`,
           {
@@ -38,8 +36,6 @@ const AdminProjects = () => {
           }
         );
       } else {
-        alert("Add Called");
-        console.log("Add Payload", values);
         response = await axios.post(
           `${PORTFOLIOPOINTS.ApiBaseUrl}add-project`,
           values
@@ -61,7 +57,6 @@ const AdminProjects = () => {
   };
 
   const showDeleteConfirm = (item) => {
-    console.log('delete projects',item)
     showConfirm({
       title: `Are you sure you want to delete this Project "${item?.title}" ?`,
       content: `This action will permanently delete this Project:`,
@@ -89,7 +84,6 @@ const AdminProjects = () => {
     } catch (error) {
       dispatch(hideLoading());
       message.error(error.message);
-      console.log(error);
     }
   };
 

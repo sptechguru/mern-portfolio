@@ -48,7 +48,6 @@ const App = () => {
       dispatch(hideLoading());
     } catch (error) {
       dispatch(hideLoading());
-      console.log("401 error ......", error);
       message.error(response.data.message);
     }
   };

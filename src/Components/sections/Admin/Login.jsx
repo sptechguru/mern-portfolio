@@ -11,13 +11,11 @@ const { Title } = Typography;
 const Login = () => {
   const dispatch = useDispatch();
   const onFinish = async (values) => {
-    console.log("Received values:", values);
     try {
       dispatch(showLoading());
       const response = await axios.post(`${PORTFOLIOPOINTS.ApiBaseUrl}login`, {
         ...values,
       });
-      console.log("Login data....", response);
       dispatch(hideLoading());
       if (response.data.success) {
         localStorage.setItem("USER", JSON.stringify(response.data));
@@ -29,7 +27,6 @@ const Login = () => {
     } catch (error) {
       dispatch(hideLoading());
       message.error(error.message);
-      console.log(error);
     }
   };
 

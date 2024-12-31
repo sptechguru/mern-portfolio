@@ -9,11 +9,11 @@ const AdminEducation = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(" Admin Educations data", portfolioData.education);
+    // console.log(" Admin Educations data", portfolioData.education);
   }, []);
 
   const onFinish = (values) => {
-    console.log("on finish called", values);
+    // console.log("on finish called", values);
   };
 
   const layout = {

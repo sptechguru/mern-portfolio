@@ -20,7 +20,7 @@ const AdminExperince = () => {
 
 
   useEffect(() => {
-    console.log(" Admin Experinces data", portfolioData.experience);
+    // console.log(" Admin Experinces data", portfolioData.experience);
   }, []);
 
   const onFinish = async (values) => {
@@ -28,8 +28,6 @@ const AdminExperince = () => {
       dispatch(showLoading());
       let response;
       if (selectedItemEdit) {
-        // alert("Update Called");
-        console.log("on Update called", values);
         response = await axios.post(
           `${PORTFOLIOPOINTS.ApiBaseUrl}update-experience`,
           {
@@ -38,8 +36,6 @@ const AdminExperince = () => {
           }
         );
       } else {
-        // alert("Add Called");
-        console.log("Add Payload", values);
         response = await axios.post(
           `${PORTFOLIOPOINTS.ApiBaseUrl}add-experience`,
           values
@@ -61,7 +57,6 @@ const AdminExperince = () => {
   };
 
   const showDeleteConfirmation = (item) => {
-    console.log('confirmation box', item)
     showConfirm({
       title: 'Delete Confirmation',
       content: `Are you sure you want to delete "${item.company}" with ID: ${item._id}?`,
@@ -86,7 +81,6 @@ const AdminExperince = () => {
     } catch (error) {
       dispatch(hideLoading());
       message.error(error.message);
-      console.log(error);
     }
   };
 

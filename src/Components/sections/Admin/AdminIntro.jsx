@@ -12,19 +12,17 @@ const AdminIntro = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-   console.log("Admin intro data", portfolioData)
+  //  console.log("Admin intro data", portfolioData)
   },[])
 
 
  const  onFinish = async (values) =>{
-    console.log("on finish called", values)
     try {
       dispatch(showLoading());
        const response = await axios.post(`${PORTFOLIOPOINTS.ApiBaseUrl}update-intro`,{
         ...values,
         _id:portfolioData.intro._id
        });
-      console.log("portfolio datas....", response);
       dispatch(hideLoading());
       if(response.data.success){
         message.success(response.data.message)
@@ -35,7 +33,6 @@ const AdminIntro = () => {
     } catch (error) {
       dispatch(hideLoading());
         message.error(error.message)
-        console.log(error)
 
     }
   }

@@ -27,8 +27,7 @@ const AdminSkills = () => {
   const id = "95e9t5";
 
   useEffect(() => {
-    console.log(" Admin All Skills data", portfolioData.skills);
-    console.log('SElected item', selectedItemEdit)
+    // console.log(" Admin All Skills data", portfolioData.skills);
   }, []);
 
   const showDeleteConfirm = (item) => {
@@ -44,8 +43,6 @@ const AdminSkills = () => {
       dispatch(showLoading());
       let response;
       if (selectedItemEdit) {
-        alert("Update Called");
-        console.log("on Update called", values);
         response = await axios.post(
           `${PORTFOLIOPOINTS.ApiBaseUrl}update-skills`,
           {
@@ -54,8 +51,6 @@ const AdminSkills = () => {
           }
         );
       } else {
-        alert("Add Called");
-        console.log("Add Payload", values);
         response = await axios.post(
           `${PORTFOLIOPOINTS.ApiBaseUrl}add-skills`,
           values
@@ -95,7 +90,6 @@ const AdminSkills = () => {
     } catch (error) {
       dispatch(hideLoading());
       message.error(error.message);
-      console.log(error);
     }
   };
 
