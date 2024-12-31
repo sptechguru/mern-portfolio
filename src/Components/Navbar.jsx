@@ -140,7 +140,7 @@ const Navbar = () => {
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/home">  <spna  style={logo}>S</spna><spna className="text-white">.P</spna></NavLogo>
+        <NavLogo to="/home">  <span  style={logo}>S</span><span className="text-white">.P</span></NavLogo>
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
           <MenuRounded style={{ color: "inherit" }} />
         </MobileIcon>

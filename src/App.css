@@ -1,0 +1,28 @@
+import "antd/dist/antd.min.css";
+
+
+/* customStyles.css */
+
+/* Override the default Ant Design Input box styles */
+.ant-input {
+    border-color: #ff4d4f; /* Custom border color */
+    background-color: #f0f0f0; /* Custom background color */
+    border-radius: 8px; /* Custom border radius */
+    padding: 10px; /* Custom padding */
+    font-size: 16px; /* Custom font size */
+  }
+  
+  /* Add focus styles */
+  .ant-input:focus {
+    border-color: #52c41a; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(82, 196, 26, 0.5); /* Custom shadow on focus */
+  }
+  
+  /* Override the button styles */
+  .ant-btn-primary {
+    background-color: #1890ff; /* Custom primary button color */
+    border-radius: 6px;
+    padding: 10px 20px;
+  }
+  
+  

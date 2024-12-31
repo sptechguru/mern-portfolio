@@ -5,8 +5,8 @@ const Spin_loader = () => {
   const spinner = {
     color: '#854CE6',
     cursor: 'pointer',
-    width: '3rem',
-    height: '3rem'
+    width: '3.5rem',
+    height: '3.5rem'
   };
 
   return (

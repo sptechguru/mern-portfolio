@@ -6,6 +6,15 @@
   font-style: normal;
 }
 
+
+input {
+  height:40px;
+  border 1px solid black;
+  width:100% !important;
+  padding-left:20px;
+}
+
+
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
@@ -200,4 +209,29 @@
 /* Hover effect for the thumb */
 ::-webkit-scrollbar-thumb:hover {
   background: #854CE6;
+}
+
+
+/* Styling for the header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #001529; /* Ant Design's default header color */
+  color: white;
+  padding: 0 20px;
+  height: 64px;
+}
+
+/* Logo styling */
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Logout button alignment */
+.logout {
+  display: flex;
+  align-items: center;
 }

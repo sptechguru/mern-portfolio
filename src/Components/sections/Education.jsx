@@ -71,7 +71,7 @@ const Education = () => {
 
         <VerticalTimeline>
           {education.map((education, index) => (
-            <EducationCard key={`education-${index}`} education={education} />
+            <EducationCard key={index} education={education} />
           ))}
         </VerticalTimeline>
         {/* <EarthCanvas /> */}
