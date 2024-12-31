@@ -6,6 +6,7 @@ import {
   LinkedIn,
   Twitter,
 } from "@mui/icons-material";
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { useSelector } from "react-redux";
 
 const FooterContainer = styled.div`
@@ -100,9 +101,9 @@ const Footer = () => {
           <SocialMediaIcon href={facebook} target="display">
             <FacebookRounded />
           </SocialMediaIcon>
-          {/* <SocialMediaIcon href={twitter} target="display">
-            <Twitter />
-          </SocialMediaIcon> */}
+          <SocialMediaIcon href={github} target="display">
+          <GitHubIcon />
+          </SocialMediaIcon>
           <SocialMediaIcon href={linkedin} target="display">
             <LinkedIn />
           </SocialMediaIcon>

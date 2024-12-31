@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import Spin_loader from "./Spin-loader";
 
 
+
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   width: 100%;

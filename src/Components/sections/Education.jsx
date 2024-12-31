@@ -66,16 +66,15 @@ const Education = () => {
             marginBottom: "40px",
           }}
         >
-          My education has been a journey of self-discovery and growth. My
-          educational details are as follows.
+          Lifelong Learner 🎓 My education has been a journey of self-discovery and growth, shaping my technical expertise and problem-solving skills.
         </Desc>
 
         <VerticalTimeline>
           {education.map((education, index) => (
-            <EducationCard key={`education-${index}`} education={education} />
+            <EducationCard key={index} education={education} />
           ))}
         </VerticalTimeline>
-        <EarthCanvas />
+        {/* <EarthCanvas /> */}
       </Wrapper>
     </Container>
   );

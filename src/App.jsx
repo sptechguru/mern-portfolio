@@ -4,35 +4,52 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { PORTFOLIOPOINTS } from "./Api/Endpoints";
 import { useDispatch, useSelector } from "react-redux";
-import { hideLoading, SetPortfolioData, showLoading } from "./redux/rootSlice";
+import {
+  hideLoading,
+  ReloadData,
+  SetPortfolioData,
+  showLoading,
+} from "./redux/rootSlice";
 import Home from "./Components/Home";
 import Weather from "./Components/Weather";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Admin from "./Components/sections/Admin";
+import Login from "./Components/sections/Admin/Login";
+import Spin_loader from "./Components/Spin-loader";
 // import "antd/dist/antd.css";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { loading, portfolioData, reloadData } = useSelector(
+    (state) => state.root
+  );
 
   useEffect(() => {
-    if(!portfolioData){
-    getAllPortFolio();
-   }
+    if (!portfolioData) {
+      getAllPortFolio();
+    }
   }, [portfolioData]);
+
+  useEffect(() => {
+    if (reloadData) {
+      getAllPortFolio();
+    }
+  }, [reloadData]);
 
   const getAllPortFolio = async () => {
     try {
       dispatch(showLoading());
-       const response = await axios.get(
+      const response = await axios.get(
         `${PORTFOLIOPOINTS.ApiBaseUrl}get-portfolio`
       );
-      // console.log("portfolio datas....", response.data);
-      dispatch(SetPortfolioData(response.data));
+      console.log("portfolio datas....", response.data.data);
+      dispatch(SetPortfolioData(response.data.data));
+      dispatch(ReloadData(false));
       dispatch(hideLoading());
     } catch (error) {
       dispatch(hideLoading());
-      console.log("401 error ......", error.response.data.message);
+      console.log("401 error ......", error);
+      message.error(response.data.message);
     }
   };
 
@@ -44,7 +61,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />}> </Route>
             <Route path="/weather" element={<Weather />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin-dashbord" element={<Admin />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

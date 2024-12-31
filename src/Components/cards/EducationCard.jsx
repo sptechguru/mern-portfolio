@@ -100,7 +100,11 @@ const EducationCard = ({ education }) => {
       date={education?.date}
     >
       <Top>
-        <Image src={education?.img} />
+        {/* <Image src={education?.img} /> */}
+        <a href={education?.img} target="_blank" >
+         <Image src={education?.img} />
+       </a>
+        
         <Body>
           <School>{education?.school}</School>
           <Degree>{education?.degree}</Degree>

@@ -66,14 +66,13 @@ const Experience = () => {
             marginBottom: "40px",
           }}
         >
-          My work experience as a software engineer and working on different
-          companies and projects.
+         Software Engineer 💻 Experienced in working with diverse companies and projects, delivering innovative solutions across Multiple Domain
         </Desc>
 
         <VerticalTimeline>
           {experience.map((experience, index) => (
             <ExperienceCard
-              key={`experience-${index}`}
+              key={index}
               experience={experience}
             />
           ))}

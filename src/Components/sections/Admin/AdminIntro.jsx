@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { PORTFOLIOPOINTS } from "../../../Api/Endpoints";
 import { hideLoading, showLoading } from "../../../redux/rootSlice";
+import TextArea from "antd/es/input/TextArea";
 
 const AdminIntro = () => {
 
@@ -55,19 +56,27 @@ const AdminIntro = () => {
           </Form.Item>
 
           <Form.Item name="description" label="Description">
-            <input placeholder="Description..." />
-          </Form.Item>
+                <TextArea
+                  placeholder="Enter your text here..."
+                  autoSize={{ minRows: 5, maxRows: 15 }} 
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    resize: "none", 
+                  }}
+                />
+              </Form.Item>
 
           <Form.Item name="github" label="Github Profile">
-            <input placeholder="Github Profile" />
+            <input placeholder="Github Profile" disabled readOnly />
           </Form.Item>
 
           <Form.Item name="linkedin" label="Linkdin Profile">
-            <input placeholder="Linkdin Profile" />
+            <input placeholder="Linkdin Profile" disabled readOnly  />
           </Form.Item>
 
           <Form.Item name="roles" label="Roles">
-            <input placeholder="Roles" />
+            <input placeholder="Roles" disabled readOnly  />
           </Form.Item>
 
           <Form.Item >

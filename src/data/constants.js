@@ -1,4 +1,4 @@
-const Bio = {
+export const Bio = {
   name: "Santosh Pal",
   roles: [
     "Full Stack Developer",
@@ -16,7 +16,7 @@ const Bio = {
   facebook: "https://www.facebook.com/",
 };
 
-const skills = [
+export const skills = [
   {
     title: "Frontend",
     skills: [
@@ -142,7 +142,7 @@ const skills = [
   },
 ]
 
-const experiences = 
+export const experiences = 
 [
   {
     id: 0,
@@ -220,7 +220,7 @@ doc: "",
 ]
 
 
-const education = [
+export const education = [
 
   {
     id: 0,
@@ -252,7 +252,7 @@ const education = [
   },
 ]
 
-const projects = [
+export const Lprojects = [
   {
     id: 1,
     title: "Diffr",
@@ -360,4 +360,12 @@ const projects = [
   }
 ]
 
-module.exports = { Bio, skills, experiences, education, projects };
+export const baseLiveProject = [
+  { name: 'Node js Crud Api', url: 'https://sptech-api-v1.onrender.com/' },
+  { name: 'React js Movie', url: 'https://sptechreact.netlify.app/' },
+  { name: 'React js Weather', url: 'https://sptectreactjs-weather.netlify.app/' },
+  { name: 'Angular 18', url: 'https://sptechguru.github.io/Angular18/login' },
+  { name: 'E-commerce', url: 'https://onlineguru.pythonanywhere.com/shop/' },
+  { name: 'Old-portfolio', url: 'https://sani.pythonanywhere.com/' }
+];
+

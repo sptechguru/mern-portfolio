@@ -108,7 +108,9 @@ const TextLoop = styled.div`
 
 const Span = styled.div`
   cursor: pointer;
-  color: ${({ theme }) => theme.primary};
+  color: coral;
+  text-transform: uppercase;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 `;
 
 const SubTitle = styled.div`
@@ -218,10 +220,6 @@ const Hero = () => {
   const {intro} = portfolioData;
   const {name,description,roles,resume,profile_url} = intro;
   
-  // useEffect(() => {
-  //   console.log("hero Intro data ", intro);
-  // }, []);
-
   return (
     <div id="About">
       {loading ? <Spin_loader /> : null}
@@ -230,6 +228,7 @@ const Hero = () => {
           <StarCanvas />
           <HeroBgAnimation />
         </HeroBg>
+        
         <motion.div {...headContainerAnimation}>
           <HeroInnerContainer>
             <HeroLeftContainer>
@@ -238,7 +237,6 @@ const Hero = () => {
                   Hi, I am <br /> {name || 'NA'}
                 </Title>
                 <TextLoop>
-                  I am a
                   <Span>
                     <Typewriter
                       options={{
