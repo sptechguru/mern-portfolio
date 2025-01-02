@@ -16,10 +16,18 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    overflow-x: hidden !important;
   }
   
-  .login-title {
+  .title_gradient_text {
     text-align: center;
     margin-bottom: 20px;
+    background: radial-gradient(circle, #0056cb, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
   }
   

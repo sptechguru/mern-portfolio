@@ -1,17 +1,8 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-
 input {
-  height:40px;
-  border 1px solid black;
-  width:100% !important;
-  padding-left:20px;
+  height: 40px;
+  border 1px solid black !important;
+  width: 100% !important;
+  padding-left: 20px;
 }
 
 
@@ -123,33 +114,25 @@ input {
   font-style: italic;
 }
 
-/* Flexbox container for the buttons */
 .button-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center the buttons horizontally */
-  gap: 15px; /* Space between buttons */
+  justify-content: center;
+  gap: 15px;
   margin-bottom: 1.5rem !important;
 }
 
-/* Button styling */
 .styled-button {
   background: hsla(271, 100%, 50%, 1);
-  background: linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
+  background: linear-gradient(225deg,
+      hsla(271, 100%, 50%, 1) 0%,
+      hsla(294, 100%, 50%, 1) 100%);
+  background: -moz-linear-gradient(225deg,
+      hsla(271, 100%, 50%, 1) 0%,
+      hsla(294, 100%, 50%, 1) 100%);
+  background: -webkit-linear-gradient(225deg,
+      hsla(271, 100%, 50%, 1) 0%,
+      hsla(294, 100%, 50%, 1) 100%);
   box-shadow: 20px 20px 60px #1f2634, -20px -20px 60px #1f2634;
   border-radius: 50px !important;
   font-weight: 600;
@@ -160,12 +143,11 @@ input {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  flex: 1 1 auto; /* Allow buttons to resize on smaller screens */
-  min-width: 150px; /* Minimum width for buttons */
-  max-width: 200px; /* Maximum width for buttons */
+  flex: 1 1 auto;
+  min-width: 150px;
+  max-width: 200px;
 }
 
-/* Hover effect for buttons */
 .styled-button:hover {
   transform: scale(1.05);
   transition: all 0.4s ease-in-out;
@@ -173,7 +155,6 @@ input {
   filter: brightness(1);
 }
 
-/* Responsive styling */
 @media (max-width: 768px) {
   .styled-button {
     padding: 10px 15px;
@@ -188,49 +169,42 @@ input {
   }
 }
 
-
-/* Style the scrollbar */
 ::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
+  width: 8px;
 }
 
-/* Style the track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the scrollbar track */
+  background: #f1f1f1;
   border-radius: 5px;
 }
 
-/* Style the thumb */
 ::-webkit-scrollbar-thumb {
-  background: #854CE6; /* Color of the scrollbar thumb */
+  background: #854CE6;
   border-radius: 5px;
 }
 
-/* Hover effect for the thumb */
+
 ::-webkit-scrollbar-thumb:hover {
   background: #854CE6;
 }
 
 
-/* Styling for the header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #001529; /* Ant Design's default header color */
+  background: #001529;
   color: white;
   padding: 0 20px;
   height: 64px;
 }
 
-/* Logo styling */
 .logo {
   font-size: 18px;
   font-weight: bold;
   color: white;
 }
 
-/* Logout button alignment */
 .logout {
   display: flex;
   align-items: center;

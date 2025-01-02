@@ -3,18 +3,13 @@ import { Form, Input, Button, message } from "antd"
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { PORTFOLIOPOINTS } from "../../../Api/Endpoints";
-import { hideLoading, showLoading } from "../../../redux/rootSlice";
+import { hideLoading, ReloadData, showLoading } from "../../../redux/rootSlice";
 import TextArea from "antd/es/input/TextArea";
 
 const AdminIntro = () => {
 
   const { loading, portfolioData } = useSelector((state) => state.root);
   const dispatch = useDispatch();
-
-  useEffect(()=>{
-  //  console.log("Admin intro data", portfolioData)
-  },[])
-
 
  const  onFinish = async (values) =>{
     try {
@@ -24,6 +19,7 @@ const AdminIntro = () => {
         _id:portfolioData.intro._id
        });
       dispatch(hideLoading());
+      dispatch(ReloadData(true));
       if(response.data.success){
         message.success(response.data.message)
       }
@@ -78,7 +74,7 @@ const AdminIntro = () => {
 
           <Form.Item >
           <Button type="primary" htmlType="submit">
-          Submit
+          update
         </Button>
         </Form.Item>
         </Form>

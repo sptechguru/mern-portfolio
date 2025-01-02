@@ -7,8 +7,12 @@ import axios from "axios";
 import { PORTFOLIOPOINTS } from "../../../Api/Endpoints";
 import { useDispatch } from "react-redux";
 const { Title } = Typography;
+import { useNavigate } from "react-router-dom";
+import HeroBgAnimation from "../../HeroBgAnimation";
+import StyledStarsCanvas from "../../canvas/Stars";
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const onFinish = async (values) => {
     try {
@@ -19,7 +23,7 @@ const Login = () => {
       dispatch(hideLoading());
       if (response.data.success) {
         localStorage.setItem("USER", JSON.stringify(response.data));
-        window.location.href = "/admin-dashbord";
+        navigate("/admin-dashboard");
         message.success(response.data.message);
       } else {
         message.error(response.data.message);
@@ -31,39 +35,53 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <Card className="login-card">
-        <Title level={2} className="login-title">
-          Super Admin Login
-        </Title>
-        <Form name="login" onFinish={onFinish} layout="vertical">
-          <Form.Item
-            name="email"
-            label="email"
-            rules={[
-              { required: true, message: "Please enter your email!" },
-              { type: "email", message: "Please enter a valid email!" },
-            ]}
-          >
-            <Input prefix={<UserOutlined />} placeholder="Email" />
-          </Form.Item>
+    <>
+      <div className="login-container">
+        <StyledStarsCanvas />
+        <HeroBgAnimation />
+        <Card className="login-card">
+          <Title level={2} className="title_gradient_text">
+            Super Admin Login
+          </Title>
+          <Form name="login" onFinish={onFinish} layout="vertical">
+            <Form.Item
+              name="email"
+              label="Email"
+              rules={[
+                { required: true, message: "Please enter your email!" },
+                { type: "email", message: "Please enter a valid email!" },
+              ]}
+            >
+              <Input prefix={<UserOutlined />} placeholder="Email" />
+            </Form.Item>
 
-          <Form.Item
-            name="password"
-            label="password"
-            rules={[{ required: true, message: "Please enter your password!" }]}
-          >
-            <Input.Password prefix={<LockOutlined />} placeholder="Password" />
-          </Form.Item>
+            <Form.Item
+              name="password"
+              label="Password"
+              rules={[
+                { required: true, message: "Please enter your password!" },
+              ]}
+            >
+              <Input.Password
+                prefix={<LockOutlined />}
+                placeholder="Password"
+              />
+            </Form.Item>
 
-          <Form.Item>
-            <Button type="primary" htmlType="submit" block>
-              Log In
-            </Button>
-          </Form.Item>
-        </Form>
-      </Card>
-    </div>
+            <Form.Item>
+              <Button
+                type="primary"
+                className="btn_login"
+                htmlType="submit"
+                block
+              >
+                Log In
+              </Button>
+            </Form.Item>
+          </Form>
+        </Card>
+      </div>
+    </>
   );
 };
 

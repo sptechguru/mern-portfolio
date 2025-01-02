@@ -1,28 +1,111 @@
 import "antd/dist/antd.min.css";
 
-
 /* customStyles.css */
 
 /* Override the default Ant Design Input box styles */
 .ant-input {
-    border-color: #ff4d4f; /* Custom border color */
-    background-color: #f0f0f0; /* Custom background color */
-    border-radius: 8px; /* Custom border radius */
-    padding: 10px; /* Custom padding */
-    font-size: 16px; /* Custom font size */
+  border-color: #ff4d4f;
+  /* Custom border color */
+  background-color: #f0f0f0;
+  /* Custom background color */
+  border-radius: 8px;
+  /* Custom border radius */
+  padding: 10px;
+  /* Custom padding */
+  font-size: 16px;
+  /* Custom font size */
+}
+
+/* Add focus styles */
+.ant-input:focus {
+  border-color: #52c41a;
+  /* Green border on focus */
+  box-shadow: 0 0 5px rgba(82, 196, 26, 0.5);
+}
+
+.ant-btn-primary {
+  background-color: #1890ff;
+  border-radius: 6px;
+  padding: 10px 20px;
+  
+}
+.btn_login{
+  font-size: 1.3rem;
+  height: 50px;
+  font-weight: bold;
+}
+
+.welcome_box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  /* border: 1px solid #e0e0e0; */
+  border-radius: 8px;
+  /* background-color: #f9fafc; */
+  width: fit-content;
+  position: absolute;
+  top: 4px;
+  right: 59px;
+  z-index: 1000;
+}
+
+
+.profile_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f3f3f3;
+}
+
+/* Welcome text styling */
+.welcome_text {
+  font-size: 1rem;
+}
+
+.ant-card-head-title {
+  font-size: 1.3rem !important;
+  color: #fff !important;
+  font-weight: bold;
+  text-transform: capitalize !important;
+}
+
+.ant-card-head {
+  background-color: #001529 !important;
+}
+
+.skills_box {
+  position: relative !important;
+  top: -67px !important;
+  /* padding: 0rem; */
+}
+
+@media (max-width: 768px) {
+  .welcome_box {
+    top: 6px;
+    left: 4px;
   }
-  
-  /* Add focus styles */
-  .ant-input:focus {
-    border-color: #52c41a; /* Green border on focus */
-    box-shadow: 0 0 5px rgba(82, 196, 26, 0.5); /* Custom shadow on focus */
+
+  .welcome_text {
+    font-size: 1.3rem;
   }
-  
-  /* Override the button styles */
-  .ant-btn-primary {
-    background-color: #1890ff; /* Custom primary button color */
-    border-radius: 6px;
-    padding: 10px 20px;
+
+  .logo {
+    display: none;
   }
-  
-  
+
+  .header {
+    justify-content: flex-end !important;
+    align-items: center;
+  }
+
+  .skills_box {
+    top: -13px !important;
+    padding: 0rem;
+    width: 100% !important;
+  }
+  .ant-card-head-title {
+    font-size: 1rem !important;
+  }
+}

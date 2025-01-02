@@ -53,10 +53,6 @@ const Experience = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
   const { experience } = portfolioData;
   
-  // useEffect(() => {
-  //   console.log("experiences data ", experience);
-  // }, []);
-
   return (
     <Container id="Experience">
       <Wrapper>

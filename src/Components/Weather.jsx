@@ -22,13 +22,12 @@ const Weather = () => {
       const response = await axios.get(
         `${ENDPOINTS.ApiBaseUrl}${city}&units=metric&appid=${ENDPOINTS.WeatherKey}`
       );
-      // console.log('weather appp....', response.data);
       newWetherData(response.data);
       setLoading(false);
+      toast.success(`Your city Name: ${city}`);
     } catch (error) {
       setError(error.response.data.message);
       toast.error(error.response.data.message);
-      // console.log('401 error ......',error.response.data.message)
       setLoading(false);
     }
   };
@@ -36,7 +35,7 @@ const Weather = () => {
   return (
     <>
       <ToastContainer />
-      <div className="container-fluid bg-light py-5">
+      <div className="container-fluid bg-dark py-5">
         <div className="container py-5">    
         {loading ? <Spin_loader/> : null}
           <div className="row gx-5">

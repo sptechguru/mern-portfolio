@@ -18,11 +18,6 @@ const AdminProjects = () => {
   const [type, setType] = React.useState("add");
   const { showConfirm } = useConfirmationModal();
 
-
-  useEffect(() => {
-    // console.log(" Admin Projects data", portfolioData.projects);
-  }, []);
-
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
@@ -170,6 +165,7 @@ const AdminProjects = () => {
           {portfolioData.projects.map((card, index) => (
             <Col key={index} xs={24} sm={12} md={8} lg={6}>
               <Card
+               hoverable
                 style={{
                   borderRadius: 10,
                   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

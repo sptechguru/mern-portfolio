@@ -18,11 +18,6 @@ const AdminExperince = () => {
   const [type, setType] = React.useState("add");
   const { showConfirm } = useConfirmationModal();
 
-
-  useEffect(() => {
-    // console.log(" Admin Experinces data", portfolioData.experience);
-  }, []);
-
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
@@ -167,7 +162,8 @@ const AdminExperince = () => {
           {portfolioData.experience.map((card, index) => (
             <Col key={index} xs={24} sm={12} md={8} lg={6}>
               <Card
-                style={{
+                hoverable
+                 style={{
                   borderRadius: 10,
                   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                 }}

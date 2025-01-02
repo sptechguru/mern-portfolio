@@ -54,9 +54,6 @@ const Education = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
   const { education } = portfolioData;
 
-  // useEffect(() => {
-  //   console.log("Educations data ", education);
-  // }, []);
   return (
     <Container id="Education">
       <Wrapper>

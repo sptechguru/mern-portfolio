@@ -4,18 +4,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { PORTFOLIOPOINTS } from "./Api/Endpoints";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  hideLoading,
-  ReloadData,
-  SetPortfolioData,
-  showLoading,
-} from "./redux/rootSlice";
+import { hideLoading,ReloadData,SetPortfolioData,showLoading,} from "./redux/rootSlice";
 import Home from "./Components/Home";
 import Weather from "./Components/Weather";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Admin from "./Components/sections/Admin";
 import Login from "./Components/sections/Admin/Login";
-import Spin_loader from "./Components/Spin-loader";
 // import "antd/dist/antd.css";
 
 const App = () => {
@@ -42,7 +36,7 @@ const App = () => {
       const response = await axios.get(
         `${PORTFOLIOPOINTS.ApiBaseUrl}get-portfolio`
       );
-      console.log("portfolio datas....", response.data.data);
+      // console.log("portfolio datas....", response.data.data);
       dispatch(SetPortfolioData(response.data.data));
       dispatch(ReloadData(false));
       dispatch(hideLoading());
@@ -56,12 +50,11 @@ const App = () => {
     <>
       <ThemeProvider theme={darkTheme}>
         <BrowserRouter>
-          {/* {loading ? <Spin_loader/> : null} */}
           <Routes>
             <Route path="/" element={<Home />}> </Route>
             <Route path="/weather" element={<Weather />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/admin-dashbord" element={<Admin />} />
+            <Route path="/admin-dashboard" element={<Admin />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

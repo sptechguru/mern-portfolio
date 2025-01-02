@@ -111,7 +111,7 @@ const Footer = () => {
             <Instagram />
           </SocialMediaIcon>
         </SocialMediaIcons>
-        <Copyright>&copy; 2024 {name}. All rights reserved.</Copyright>
+        <Copyright>© 2025 {name} All rights reserved. For inquiries, Contact 📧 santoshpal9816@gmail.com</Copyright>
       </FooterWrapper>
     </FooterContainer>
   );

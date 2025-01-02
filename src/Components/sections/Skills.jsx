@@ -120,10 +120,6 @@ const Skills = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
   const {skills} = portfolioData;
 
-  // useEffect(() => {
-  //   console.log("Skills data ", skills);
-  // },[]);
-
   return (
     <Container id="Skills">
       <Wrapper>

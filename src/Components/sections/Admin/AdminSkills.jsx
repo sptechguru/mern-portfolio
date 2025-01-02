@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Typography, Image } from "antd";
+import { Form, Input, Button, Typography, Image, Space } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { PORTFOLIOPOINTS } from "../../../Api/Endpoints";
@@ -12,31 +12,26 @@ import {
   EditOutlined,
   DeleteOutlined,
   PlusOutlined,
+  MinusCircleOutlined,
 } from "@ant-design/icons";
 import useConfirmationModal from "./useConfirmationModal";
 
 const AdminSkills = () => {
-  
   const { showConfirm } = useConfirmationModal();
-
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const { portfolioData } = useSelector((state) => state.root);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [selectedItemEdit, setSelectedItemEdit] = React.useState(null);
   const [type, setType] = React.useState("add");
-  const id = "95e9t5";
-
-  useEffect(() => {
-    // console.log(" Admin All Skills data", portfolioData.skills);
-  }, []);
 
   const showDeleteConfirm = (item) => {
     showConfirm({
-      title: 'Are you sure you want to delete this Skills?',
+      title: `Are you sure you want to delete this Skills Name ${item?.title}? with id ${item?._id}`,
       content: `This action will permanently delete the Skills:`,
-      onConfirm: () => deleteExperice(item?._id),
+      onConfirm: () => deleteSkills(item?._id),
     });
-  }
+  };
 
   const onFinish = async (values) => {
     try {
@@ -60,6 +55,7 @@ const AdminSkills = () => {
       if (response.data.success) {
         dispatch(hideLoading());
         dispatch(ReloadData(true));
+        form.resetFields();
         message.success(response.data.message);
       } else {
         message.error(response.data.message);
@@ -71,13 +67,11 @@ const AdminSkills = () => {
     }
   };
 
-  const deleteExperice = async (sKid) => {
+  const deleteSkills = async (id) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post(
-        `${PORTFOLIOPOINTS.ApiBaseUrl}delete-skills`,
-        {
-          _id:sKid,
+      const response = await axios.post(`${PORTFOLIOPOINTS.ApiBaseUrl}delete-skills`,{
+        _id: id,
         }
       );
       dispatch(hideLoading());
@@ -98,7 +92,7 @@ const AdminSkills = () => {
       <Button
         type="primary"
         icon={<PlusOutlined />}
-        disabled
+        // disabled
         onClick={() => {
           setSelectedItemEdit(null);
           setIsModalOpen(true);
@@ -121,20 +115,64 @@ const AdminSkills = () => {
           <div>
             <Form
               onFinish={onFinish}
+              form={form}
               layout="vertical"
+              // initialValues={{ skills: [{}] }}
               initialValues={selectedItemEdit}
             >
-              <Form.Item name="title" label="Skills Category Title">
+              <Form.Item name="title" label="Skills Category Title"               >
                 <input placeholder="Skills Category Title" />
               </Form.Item>
 
-              <Form.Item name="image" label="Skills Logo Pic">
-                <input placeholder="Skills profile" />
-              </Form.Item>
+              <Form.List name="skills">
+                {(fields, { add, remove }) => (
+                  <>
+                    {fields.map(({ key, name, ...restField }) => (
+                      <Space
+                        key={key}
+                        align="baseline"
+                        style={{ display: "flex", marginBottom: 8 }}
+                      >
+                        <Form.Item
+                          {...restField}
+                          name={[name, "name"]}
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please enter skill name!",
+                            },
+                          ]}
+                        >
+                          <Input placeholder="Skill Name (e.g., HTML)" />
+                        </Form.Item>
 
-              <Form.Item name="name" label="Skills Name ">
-                <input placeholder="Skills Name" />
-              </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, "image"]}
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please upload an image!",
+                            },
+                          ]}
+                        >
+                          <Input placeholder="Image URL" />
+                        </Form.Item>
+                        <MinusCircleOutlined onClick={() => remove(name)} />
+                      </Space>
+                    ))}
+                    <Form.Item>
+                      <Button
+                        type="dashed"
+                        onClick={() => add()}
+                        icon={<PlusOutlined />}
+                      >
+                        Add Skill
+                      </Button>
+                    </Form.Item>
+                  </>
+                )}
+              </Form.List>
 
               <Form.Item>
                 <Button type="primary" htmlType="submit">
@@ -147,47 +185,49 @@ const AdminSkills = () => {
       )}
 
       <div style={{ padding: "40px" }}>
-        {portfolioData.skills.map((category, index) => (
+        {portfolioData?.skills.map((category, index) => (
           <Card
             key={index}
-            title={category.title}
-            bordered
+            title={category?.title}
+            hoverable
             style={{
               marginBottom: "20px",
               borderRadius: "8px",
               background: "#f9fafb",
+              color:'red'
             }}
+            
           >
-            <Row justify="end" gutter={8}>
-              <Col>
-                <Button
-                  type="primary"
-                  disabled
-                  icon={<EditOutlined />}
-                  onClick={() => {
-                    setSelectedItemEdit(category);
-                    setIsModalOpen(true);
-                    setType("edit");
-                  }}
-                >
-                  Edit
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  type="primary"
-                  danger
-                  icon={<DeleteOutlined />}
-                  disabled
-                  onClick={()=>showDeleteConfirm(category)}
-                >
-                  Delete
-                </Button>
-              </Col>
-            </Row>
-            <br />
+        <Row className="skills_box" justify="end" gutter={8}>
+          <Col>
+            <Button
+              type="primary"
+              // disabled
+              icon={<EditOutlined />}
+              onClick={() => {
+                setSelectedItemEdit(category);
+                setIsModalOpen(true);
+                setType("edit");
+              }}
+            >
+              Edit
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              type="primary"
+              danger
+              icon={<DeleteOutlined />}
+              //disabled
+              onClick={() => showDeleteConfirm(category)}
+            >
+              Delete
+            </Button>
+          </Col>
+        </Row>
+        <br/>
             <Row gutter={[16, 16]}>
-              {category.skills.map((skill, skillIndex) => (
+              {category.skills?.map((skill, skillIndex) => (
                 <Col xs={24} sm={12} md={8} lg={6} key={skillIndex}>
                   <Card
                     hoverable
