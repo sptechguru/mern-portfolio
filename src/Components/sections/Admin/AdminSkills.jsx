@@ -13,8 +13,10 @@ import {
   DeleteOutlined,
   PlusOutlined,
   MinusCircleOutlined,
+  LockOutlined,
 } from "@ant-design/icons";
 import useConfirmationModal from "./useConfirmationModal";
+import { hasSuperAdminRole } from "../../../services/AuthService";
 
 const AdminSkills = () => {
   const { showConfirm } = useConfirmationModal();
@@ -24,6 +26,7 @@ const AdminSkills = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [selectedItemEdit, setSelectedItemEdit] = React.useState(null);
   const [type, setType] = React.useState("add");
+  const [userRole, setUserRole] = useState(null);
 
   const showDeleteConfirm = (item) => {
     showConfirm({
@@ -32,6 +35,11 @@ const AdminSkills = () => {
       onConfirm: () => deleteSkills(item?._id),
     });
   };
+
+  useEffect(() => {
+    const role = hasSuperAdminRole() ? "SUPER_ADMIN_SPTECH" : "GUEST";
+    setUserRole(role);
+  }, []);
 
   const onFinish = async (values) => {
     try {
@@ -70,8 +78,10 @@ const AdminSkills = () => {
   const deleteSkills = async (id) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post(`${PORTFOLIOPOINTS.ApiBaseUrl}delete-skills`,{
-        _id: id,
+      const response = await axios.post(
+        `${PORTFOLIOPOINTS.ApiBaseUrl}delete-skills`,
+        {
+          _id: id,
         }
       );
       dispatch(hideLoading());
@@ -92,7 +102,7 @@ const AdminSkills = () => {
       <Button
         type="primary"
         icon={<PlusOutlined />}
-        // disabled
+        disabled={!hasSuperAdminRole()}
         onClick={() => {
           setSelectedItemEdit(null);
           setIsModalOpen(true);
@@ -120,7 +130,7 @@ const AdminSkills = () => {
               // initialValues={{ skills: [{}] }}
               initialValues={selectedItemEdit}
             >
-              <Form.Item name="title" label="Skills Category Title"               >
+              <Form.Item name="title" label="Skills Category Title">
                 <input placeholder="Skills Category Title" />
               </Form.Item>
 
@@ -194,38 +204,38 @@ const AdminSkills = () => {
               marginBottom: "20px",
               borderRadius: "8px",
               background: "#f9fafb",
-              color:'red'
+              color: "red",
             }}
-            
           >
-        <Row className="skills_box" justify="end" gutter={8}>
-          <Col>
-            <Button
-              type="primary"
-              // disabled
-              icon={<EditOutlined />}
-              onClick={() => {
-                setSelectedItemEdit(category);
-                setIsModalOpen(true);
-                setType("edit");
-              }}
-            >
-              Edit
-            </Button>
-          </Col>
-          <Col>
-            <Button
-              type="primary"
-              danger
-              icon={<DeleteOutlined />}
-              //disabled
-              onClick={() => showDeleteConfirm(category)}
-            >
-              Delete
-            </Button>
-          </Col>
-        </Row>
-        <br/>
+            {userRole === "SUPER_ADMIN_SPTECH" ? (
+              <Row className="skills_box" justify="end" gutter={8}>
+                <Col>
+                  <Button
+                    type="primary"
+                    icon={<EditOutlined />}
+                    onClick={() => {
+                      setSelectedItemEdit(category);
+                      setIsModalOpen(true);
+                      setType("edit");
+                    }}
+                  >
+                    Edit
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                    type="primary"
+                    danger
+                    icon={<DeleteOutlined />}
+                    onClick={() => showDeleteConfirm(category)}
+                  >
+                    Delete
+                  </Button>
+                </Col>
+              </Row>
+            ) :('')
+            }
+            <br />
             <Row gutter={[16, 16]}>
               {category.skills?.map((skill, skillIndex) => (
                 <Col xs={24} sm={12} md={8} lg={6} key={skillIndex}>

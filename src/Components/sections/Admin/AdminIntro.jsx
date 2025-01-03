@@ -1,15 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, message } from "antd"
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { PORTFOLIOPOINTS } from "../../../Api/Endpoints";
 import { hideLoading, ReloadData, showLoading } from "../../../redux/rootSlice";
 import TextArea from "antd/es/input/TextArea";
+import { hasSuperAdminRole } from "../../../services/AuthService";
 
 const AdminIntro = () => {
 
   const { loading, portfolioData } = useSelector((state) => state.root);
   const dispatch = useDispatch();
+  const [userRole, setUserRole] = useState(null);
+  useEffect(() => {
+    const role = hasSuperAdminRole() ? "SUPER_ADMIN_SPTECH" : "GUEST";
+    setUserRole(role);
+  }, []);
 
  const  onFinish = async (values) =>{
     try {
@@ -73,7 +79,9 @@ const AdminIntro = () => {
           </Form.Item>
 
           <Form.Item >
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" 
+          disabled={!hasSuperAdminRole()}
+          htmlType="submit">
           update
         </Button>
         </Form.Item>

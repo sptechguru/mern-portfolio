@@ -9,6 +9,7 @@ import { Card, Row, Col } from "antd";
 import { Modal } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import useConfirmationModal from "./useConfirmationModal";
+import { hasSuperAdminRole } from "../../../services/AuthService";
 
 const AdminProjects = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,13 @@ const AdminProjects = () => {
   const [selectedItemEdit, setSelectedItemEdit] = React.useState(null);
   const [type, setType] = React.useState("add");
   const { showConfirm } = useConfirmationModal();
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const role = hasSuperAdminRole() ? "SUPER_ADMIN_SPTECH" : "GUEST";
+    setUserRole(role);
+  }, []);
+
 
   const onFinish = async (values) => {
     try {
@@ -89,6 +97,7 @@ const AdminProjects = () => {
       <Button
         type="primary"
         icon={<PlusOutlined />}
+        disabled={!hasSuperAdminRole()}
         onClick={() => {
           setSelectedItemEdit(null);
           setIsModalOpen(true);
@@ -184,10 +193,12 @@ const AdminProjects = () => {
                     }}
                   />
                 }
+
                 actions={[
                   <Button
                     type="primary"
                     icon={<EditOutlined />}
+                    disabled={!hasSuperAdminRole()}
                     onClick={() => {
                       setSelectedItemEdit(card);
                       setIsModalOpen(true);
@@ -200,7 +211,7 @@ const AdminProjects = () => {
                   <Button
                     type="primary"
                     danger
-                    //disabled
+                    disabled={!hasSuperAdminRole()}
                     icon={<DeleteOutlined />}
                     onClick={() => showDeleteConfirm(card)}
                     style={{ borderRadius: 5 }}

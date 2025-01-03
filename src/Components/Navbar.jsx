@@ -3,8 +3,7 @@ import { Link as LinkR } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
 // import { Bio } from "../data/constants";
 import { LinkedIn, MenuRounded } from "@mui/icons-material";
-import GitHubIcon from '@mui/icons-material/GitHub';
-
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -75,14 +74,14 @@ const ButtonContainer = styled.div`
 `;
 
 const GithubButton = styled.a`
-  border: 1px solid #854CE6;
-  color: #854CE6;
+  border: 1px solid #854ce6;
+  color: #854ce6;
   justify-content: center;
   display: flex;
   align-items: center;
   border-radius: 100%;
-  width:35px;
-  height:41px !important;
+  width: 35px;
+  height: 41px !important;
   cursor: pointer;
   padding: 10px 20px;
   font-size: 16px;
@@ -90,7 +89,7 @@ const GithubButton = styled.a`
   transition: all 0.3s ease-in-out;
   text-decoration: none;
   &:hover {
-    background: #854CE6;
+    background: #854ce6;
     color: ${({ theme }) => theme.text_primary};
   }
 `;
@@ -131,16 +130,23 @@ const MobileMenu = styled.ul`
 `;
 
 const Navbar = () => {
+  const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const theme = useTheme();
+  // const theme = useTheme();
   const logo = {
-    color: '#854CE6',
+    color: "#854CE6",
   };
+
+
 
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/home">  <span  style={logo}>S</span><span className="text-white">.P</span></NavLogo>
+        <NavLogo to="/home">
+          {" "}
+          <span style={logo}>S</span>
+          <span className="text-white">.P</span>
+        </NavLogo>
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
           <MenuRounded style={{ color: "inherit" }} />
         </MobileIcon>
@@ -156,7 +162,8 @@ const Navbar = () => {
         {isOpen && (
           <MobileMenu isOpen={isOpen}>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#About">
-            Home            </NavLink>
+              Home{" "}
+            </NavLink>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Skills">
               Skills
             </NavLink>
@@ -170,7 +177,7 @@ const Navbar = () => {
               Education
             </NavLink>
             <GithubButton
-              href='https://github.com/sptechguru'
+              href="https://github.com/sptechguru"
               target="_Blank"
               style={{
                 background: theme.primary,
@@ -179,24 +186,35 @@ const Navbar = () => {
             >
               <GitHubIcon />
             </GithubButton>
-            
-          <GithubButton className="mx-2" href='https://www.linkedin.com/in/santosh-pal-6a171a1a3/' target="_Blank"  
-           style={{
+
+            <GithubButton
+              className="mx-2"
+              href="https://www.linkedin.com/in/santosh-pal-6a171a1a3/"
+              target="_Blank"
+              style={{
                 background: theme.primary,
                 color: theme.text_primary,
-              }}>
-           <LinkedIn />
-          </GithubButton>
+              }}
+            >
+              <LinkedIn />
+            </GithubButton>
           </MobileMenu>
         )}
 
         <ButtonContainer>
-          <GithubButton href='https://github.com/sptechguru' target="_Blank">
-           <GitHubIcon />
+        {/* <button className="btn btn-outline-dark btn-md mx-3" onClick={toggleTheme}>
+            {theme === "light" ? "🌙" : "☀️"}
+          </button> */}
+          <GithubButton href="https://github.com/sptechguru" target="_Blank">
+            <GitHubIcon />
           </GithubButton>
 
-          <GithubButton className="mx-2" href='https://www.linkedin.com/in/santosh-pal-6a171a1a3/' target="_Blank">
-           <LinkedIn />
+          <GithubButton
+            className="mx-2"
+            href="https://www.linkedin.com/in/santosh-pal-6a171a1a3/"
+            target="_Blank"
+          >
+            <LinkedIn />
           </GithubButton>
         </ButtonContainer>
       </NavbarContainer>
