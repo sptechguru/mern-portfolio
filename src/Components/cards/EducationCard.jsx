@@ -1,6 +1,21 @@
 import React from "react";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import styled from "styled-components";
+import { useTheme } from 'styled-components';
+
+
+const StyledTimelineElement = styled(VerticalTimelineElement)`
+  .vertical-timeline-element-content {
+    background: ${({ theme }) => theme.card};
+    color: ${({ theme }) => theme.text};
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 6px;
+  }
+  .vertical-timeline-element-content-arrow {
+    border-right: 7px solid ${({ theme }) => theme.arrow};
+  }
+`;
+
 
 const Top = styled.div`
   width: 100%;
@@ -72,8 +87,10 @@ const Span = styled.div`
 `;
 
 const EducationCard = ({ education }) => {
+  const theme = useTheme();
+
   return (
-    <VerticalTimelineElement
+    <StyledTimelineElement 
       icon={
         <img
           width="100%"
@@ -87,10 +104,9 @@ const EducationCard = ({ education }) => {
         display: "flex",
         flexDirection: "column",
         gap: "12px",
-        background: "#1d1836",
-        color: "#fff",
+        background: theme.card,
+        color: theme.text_primary,
         boxShadow: "rgba(23, 92, 230, 0.15) 0px 4px 24px",
-        backgroundColor: "rgba(17, 25, 40, 0.83)",
         border: "1px solid rgba(255, 255, 255, 0.125)",
         borderRadius: "6px",
       }}
@@ -100,7 +116,6 @@ const EducationCard = ({ education }) => {
       date={education?.date}
     >
       <Top>
-        {/* <Image src={education?.img} /> */}
         <a href={education?.img} target="_blank" >
          <Image src={education?.img} />
        </a>
@@ -118,7 +133,7 @@ const EducationCard = ({ education }) => {
       <Description>
         {education?.desc && <Span>{education.desc}</Span>}
       </Description>
-    </VerticalTimelineElement>
+    </StyledTimelineElement >
   );
 };
 

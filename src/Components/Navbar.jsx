@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link as LinkR } from "react-router-dom";
+import { Link as LinkR, useNavigate } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
-// import { Bio } from "../data/constants";
 import { LinkedIn, MenuRounded } from "@mui/icons-material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -94,6 +94,26 @@ const GithubButton = styled.a`
   }
 `;
 
+const ToggelButton = styled.a`
+  border: 1px solid #0000;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
+  width: 35px;
+  height: 41px !important;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  &:hover {
+    background: #000;
+    color: ${({ theme }) => theme.text_primary};
+  }
+`;
+
 const MobileIcon = styled.div`
   height: 100%;
   display: flex;
@@ -109,13 +129,13 @@ const MobileMenu = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-end;
   gap: 16px;
   padding: 0 6px;
   list-style: none;
   width: 100%;
   padding: 12px 40px 24px 40px;
-  background: ${({ theme }) => theme.card_light + 99};
+  background: ${({ theme }) => theme.bgLight + 99};
   position: absolute;
   top: 80px;
   right: 0;
@@ -129,23 +149,26 @@ const MobileMenu = styled.ul`
   z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
 `;
 
-const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
+const Navbar = ({ theme, toggleThemeControl }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const theme = useTheme();
   const logo = {
     color: "#854CE6",
   };
 
-
+  const handleUserClick = () => {
+    window.open("/login", "_blank");
+  };
 
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/home">
-          {" "}
+        <NavLogo to="/">
           <span style={logo}>S</span>
-          <span className="text-white">.P</span>
+          {theme === "light" ? (
+            <span className="text-dark">.P</span>
+          ) : (
+            <span className="text-white">.P</span>
+          )}
         </NavLogo>
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
           <MenuRounded style={{ color: "inherit" }} />
@@ -198,13 +221,18 @@ const Navbar = () => {
             >
               <LinkedIn />
             </GithubButton>
+
+            <GithubButton className="mx-2" onClick={handleUserClick}>
+              <AccountCircleIcon />
+            </GithubButton>
+
+            <ToggelButton className="mx-3" onClick={toggleThemeControl}>
+              {theme === "light" ? "🌙" : "☀️"}
+            </ToggelButton>
           </MobileMenu>
         )}
 
         <ButtonContainer>
-        {/* <button className="btn btn-outline-dark btn-md mx-3" onClick={toggleTheme}>
-            {theme === "light" ? "🌙" : "☀️"}
-          </button> */}
           <GithubButton href="https://github.com/sptechguru" target="_Blank">
             <GitHubIcon />
           </GithubButton>
@@ -216,6 +244,14 @@ const Navbar = () => {
           >
             <LinkedIn />
           </GithubButton>
+
+          <GithubButton className="mx-2" onClick={handleUserClick}>
+            <AccountCircleIcon />
+          </GithubButton>
+
+          <ToggelButton className="mx-2" onClick={toggleThemeControl}>
+            {theme === "light" ? "🌙" : "☀️"}
+          </ToggelButton>
         </ButtonContainer>
       </NavbarContainer>
     </Nav>

@@ -1,6 +1,5 @@
 import styled, { ThemeProvider } from "styled-components";
 import React from 'react'
-import Navbar from './Navbar';
 import Hero from "./sections/Hero";
 import Skills from "./sections/Skills";
 import Experience from "./sections/Experience";
@@ -43,7 +42,6 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
       {loading ? <Spin_loader/> : null}
       {portfolioData && (<div>
         <Body>

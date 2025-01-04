@@ -9,7 +9,6 @@ import StarCanvas from "../canvas/Stars";
 import { useSelector } from "react-redux";
 import Spin_loader from "../Spin-loader";
 
-
 const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -176,12 +175,12 @@ const ResumeButton = styled.a`
 `;
 
 const Img = styled.img`
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+ border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   width: 100%;
   height: 100%;
   max-width: 400px;
   max-height: 400px;
-  border: 2px solid ${({ theme }) => theme.primary};
+  border: 2px solid ${({ theme }) => theme.white};
 
   @media (max-width: 640px) {
     max-width: 280px;

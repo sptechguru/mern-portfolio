@@ -13,7 +13,6 @@ const { Header } = Layout;
 import { LockOutlined, PoweroffOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { getUserData, hasSuperAdminRole } from "../../../services/AuthService";
-import { Float } from "@react-three/drei";
 
 const Admin = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
@@ -65,8 +64,7 @@ const Admin = () => {
               className="profile_img"
             />
             <h2 className="welcome_text">
-              Welcome:{" "}
-              {`${userRole?.firstName} ${userRole?.lastName}`}
+              Welcome: {`${userRole?.firstName} ${userRole?.lastName}`}
             </h2>
           </div>
           <div className="logout">
@@ -82,9 +80,12 @@ const Admin = () => {
       {loading ? <Spin_loader /> : null}
 
       <div style={{ float: "right" }}>
-        {userRole !== "SUPER_ADMIN_SPTECH" && (
+        {!hasSuperAdminRole() && (
           <Button type="default" icon={<LockOutlined />}>
-           <span className="text-danger font-weight-bold"> Super Admin Access Required For Action ? </span>
+            <span className="text-danger font-weight-bold">
+              {" "}
+              Super Admin Access Required For Action ?{" "}
+            </span>
           </Button>
         )}
       </div>
