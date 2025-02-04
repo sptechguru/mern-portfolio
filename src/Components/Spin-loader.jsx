@@ -1,7 +1,6 @@
 import React from "react";
 
 const Spin_loader = () => {
-
   const spinner = {
     color: '#854CE6',
     cursor: 'pointer',
@@ -15,7 +14,7 @@ const Spin_loader = () => {
         <div className="spinner-border" role="status" style={spinner}>
           <span className="sr-only">Loading...</span>
         </div>
-        </div>        
+      </div>        
     </>
   );
 };
