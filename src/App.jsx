@@ -39,7 +39,6 @@ import ScrollToTopButton from "./Components/sections/ScrollToTopButton";
       const response = await axios.get(
         `${PORTFOLIOPOINTS.ApiBaseUrl}get-portfolio`
       );
-      // console.log("portfolio datas....", response.data.data);
       dispatch(SetPortfolioData(response.data.data));
       dispatch(ReloadData(false));
       dispatch(hideLoading());

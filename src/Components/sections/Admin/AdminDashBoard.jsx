@@ -12,10 +12,9 @@ const AdminDashBoard = () => {
   const [expCategories, setExperince] = useState([]);
   const [dofJoin, setDateOfJoin] = useState([]);
   const project = portfolioData.projects;
-  // console.log("projects::::", project);
 
   useEffect(() => {
-    console.log(" portfolio Data", portfolioData);
+    // console.log(" portfolio Data", portfolioData);
     const data = portfolioData;
     const educationLevels = data.education.map(
       (edu) => edu.degree || edu.school
