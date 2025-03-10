@@ -11,20 +11,15 @@ import Admin from "./Components/sections/Admin";
 import Login from "./Components/sections/Admin/Login";
 import { darkTheme, lightTheme } from "./utils/Themes";
 import Navbar from "./Components/Navbar";
-
-
-// import "antd/dist/antd.css";
+import ScrollToTopButton from "./Components/sections/ScrollToTopButton";
 
  const App = () => {
   const dispatch = useDispatch();
   const { loading, portfolioData, reloadData } = useSelector((state) => state.root);
-
   const [theme, setTheme] = useState('dark');
-
   const themeToggler = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
-
 
   useEffect(() => {
     if (!portfolioData) {
@@ -58,6 +53,7 @@ import Navbar from "./Components/Navbar";
     <>
   <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <BrowserRouter>
+        <ScrollToTopButton />
         <ConditionalNavbar theme={theme} toggleThemeControl={themeToggler} />
         <Routes>
           <Route path="/" element={<Home />} />
