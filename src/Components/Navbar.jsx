@@ -4,6 +4,10 @@ import styled, { useTheme } from "styled-components";
 import { LinkedIn, MenuRounded } from "@mui/icons-material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import NightlightIcon from '@mui/icons-material/Nightlight';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+
+
 
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -108,10 +112,6 @@ const ToggelButton = styled.a`
   font-weight: 500;
   transition: all 0.3s ease-in-out;
   text-decoration: none;
-  &:hover {
-    background: #000;
-    color: ${({ theme }) => theme.text_primary};
-  }
 `;
 
 const MobileIcon = styled.div`
@@ -227,7 +227,7 @@ const Navbar = ({ theme, toggleThemeControl }) => {
             </GithubButton>
 
             <ToggelButton className="mx-3" onClick={toggleThemeControl}>
-              {theme === "light" ? "🌙" : "☀️"}
+              {theme === "light" ? <NightlightIcon/> : <Brightness4Icon/>}
             </ToggelButton>
           </MobileMenu>
         )}
@@ -250,7 +250,7 @@ const Navbar = ({ theme, toggleThemeControl }) => {
           </GithubButton>
 
           <ToggelButton className="mx-2" onClick={toggleThemeControl}>
-            {theme === "light" ? "🌙" : "☀️"}
+            {theme === "light" ? <NightlightIcon/> : <Brightness4Icon/>}
           </ToggelButton>
         </ButtonContainer>
       </NavbarContainer>

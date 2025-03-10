@@ -13,6 +13,7 @@ const { Header } = Layout;
 import { LockOutlined, PoweroffOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { getUserData, hasSuperAdminRole } from "../../../services/AuthService";
+import AdminDashBoard from "./AdminDashBoard";
 
 const Admin = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
@@ -45,7 +46,7 @@ const Admin = () => {
   const handleLogout = () => {
     localStorage.removeItem("USER");
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -98,23 +99,27 @@ const Admin = () => {
             size="large"
             animated
           >
-            <TabPane tab="Intro Profile " key="1">
+            <TabPane tab="DashBoard" key="1">
+              <AdminDashBoard />
+            </TabPane>
+
+            <TabPane tab="Intro Profile " key="2">
               <AdminIntro />
             </TabPane>
 
-            <TabPane tab="Experiences" key="3">
-              <AdminExperince />
-            </TabPane>
-
-            <TabPane tab="Projects" key="4">
+            <TabPane tab="Projects" key="3">
               <AdminProjects />
             </TabPane>
 
-            <TabPane tab="Skills" key="2">
+            <TabPane tab="Experiences" key="4">
+              <AdminExperince />
+            </TabPane>
+
+            <TabPane tab="Skills" key="5">
               <AdminSkills />
             </TabPane>
 
-            <TabPane tab="Education" key="5">
+            <TabPane tab="Education" key="6">
               <AdminEducation />
             </TabPane>
           </Tabs>
