@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link as LinkR, useNavigate } from "react-router-dom";
+import { Link, Link as LinkR, Route, Routes, useNavigate } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
 import { LinkedIn, MenuRounded } from "@mui/icons-material";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -187,6 +187,7 @@ const Navbar = ({ theme, toggleThemeControl }) => {
           <NavLink href="#Experience">Experience</NavLink>
           <NavLink href="#Projects">Projects</NavLink>
           <NavLink href="#Education">Education</NavLink>
+          <Link  to="/blog">MyBlog</Link >
         </NavItems>
 
         {isOpen && (

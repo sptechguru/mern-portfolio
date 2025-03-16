@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Spin_loader from "./Spin-loader";
 
 const Weather = () => {
-  const [city, setCity] = useState("Bengaluru");
+  const [city, setCity] = useState("Indore");
   const [weatherData, newWetherData] = useState([]);
   const [error, setError] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -57,7 +57,7 @@ const Weather = () => {
                     className="btn btn-primary btn-md btn-block"
                     onClick={getAllweather}
                   >
-                    Get Weather{" "}
+                    Submit{" "}
                   </button>
                 </div>
               </div>

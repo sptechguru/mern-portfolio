@@ -12,6 +12,7 @@ import Login from "./Components/sections/Admin/Login";
 import { darkTheme, lightTheme } from "./utils/Themes";
 import Navbar from "./Components/Navbar";
 import ScrollToTopButton from "./Components/sections/ScrollToTopButton";
+import Myblog from "./Components/sections/Myblog";
 
  const App = () => {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ import ScrollToTopButton from "./Components/sections/ScrollToTopButton";
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/weather" element={<Weather />} />
+          <Route path="/blog" element={<Myblog />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin-dashboard" element={<Admin />} />
         </Routes>

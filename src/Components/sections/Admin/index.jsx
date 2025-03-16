@@ -14,6 +14,7 @@ import { LockOutlined, PoweroffOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { getUserData, hasSuperAdminRole } from "../../../services/AuthService";
 import AdminDashBoard from "./AdminDashBoard";
+import AdminBlog from "./AdminBlog";
 
 const Admin = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
@@ -121,6 +122,9 @@ const Admin = () => {
 
             <TabPane tab="Education" key="6">
               <AdminEducation />
+            </TabPane>
+            <TabPane tab="My Blog" key="7">
+              <AdminBlog />
             </TabPane>
           </Tabs>
         </div>
