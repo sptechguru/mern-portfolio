@@ -99,19 +99,25 @@ const GithubButton = styled.a`
 `;
 
 const ToggelButton = styled.a`
-  border: 1px solid #0000;
   justify-content: center;
   display: flex;
   align-items: center;
   border-radius: 100%;
-  width: 35px;
+  width: 41px;
   height: 41px !important;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 16px;
   font-weight: 500;
   transition: all 0.3s ease-in-out;
   text-decoration: none;
+  background: ${({ theme }) => (theme === "light" ? "#fff" : "#333")};
+  color: ${({ theme }) => (theme === "light" ? "#333" : "#fff")};
+
+   @media (max-width: 768px) {
+    position: absolute;
+    top: -57px !important;
+  }
 `;
 
 const MobileIcon = styled.div`
@@ -147,6 +153,7 @@ const MobileMenu = styled.ul`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
+  
 `;
 
 const Navbar = ({ theme, toggleThemeControl }) => {
@@ -228,7 +235,7 @@ const Navbar = ({ theme, toggleThemeControl }) => {
 
             <ToggelButton className="mx-3" onClick={toggleThemeControl}>
               {theme === "light" ? <NightlightIcon/> : <Brightness4Icon/>}
-            </ToggelButton>
+            </ToggelButton> 
           </MobileMenu>
         )}
 
