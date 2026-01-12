@@ -78,8 +78,8 @@ const ButtonContainer = styled.div`
 `;
 
 const GithubButton = styled.a`
-  border: 1px solid #854ce6;
-  color: #854ce6;
+background: linear-gradient(135deg, #6a11cb, #2575fc);
+color: #fff;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -206,7 +206,7 @@ const Navbar = ({ theme, toggleThemeControl }) => {
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Education">
               Education
             </NavLink>
-            <GithubButton
+            {/* <GithubButton
               href="https://github.com/sptechguru"
               target="_Blank"
               style={{
@@ -227,7 +227,7 @@ const Navbar = ({ theme, toggleThemeControl }) => {
               }}
             >
               <LinkedIn />
-            </GithubButton>
+            </GithubButton> */}
 
             <GithubButton className="mx-2" onClick={handleUserClick}>
               <AccountCircleIcon />
@@ -240,7 +240,7 @@ const Navbar = ({ theme, toggleThemeControl }) => {
         )}
 
         <ButtonContainer>
-          <GithubButton href="https://github.com/sptechguru" target="_Blank">
+          {/* <GithubButton href="https://github.com/sptechguru" target="_Blank">
             <GitHubIcon />
           </GithubButton>
 
@@ -250,7 +250,7 @@ const Navbar = ({ theme, toggleThemeControl }) => {
             target="_Blank"
           >
             <LinkedIn />
-          </GithubButton>
+          </GithubButton> */}
 
           <GithubButton className="mx-2" onClick={handleUserClick}>
             <AccountCircleIcon />

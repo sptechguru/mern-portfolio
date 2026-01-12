@@ -129,7 +129,7 @@ const Skills = () => {
             marginBottom: "40px",
           }}
         >
-        Full Stack Developer 🌊 Skilled in Angular, React, TypeScript, and Micro Frontend Architecture | Over 3 years of hands-on experience
+        Full Stack Developer 🌊 Skilled in Angular, React, TypeScript, and Micro Frontend Architecture | Over 4 years of hands-on experience
         </Desc>
 
         <SkillsContainer>

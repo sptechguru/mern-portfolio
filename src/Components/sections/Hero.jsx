@@ -4,10 +4,46 @@ import Typewriter from "typewriter-effect";
 import HeroBgAnimation from "../HeroBgAnimation";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import { headContainerAnimation,headContentAnimation,headTextAnimation } from "../../utils/motion";
+import {
+  headContainerAnimation,
+  headContentAnimation,
+  headTextAnimation,
+} from "../../utils/motion";
 import StarCanvas from "../canvas/Stars";
 import { useSelector } from "react-redux";
 import Spin_loader from "../Spin-loader";
+import {
+  Email,
+  FacebookRounded,
+  Instagram,
+  LinkedIn,
+  Twitter,
+} from "@mui/icons-material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import DownloadIcon from "@mui/icons-material/Download";
+
+const SocialLink = styled.a`
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+  svg {
+    font-size: 22px;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.1);
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    box-shadow: 0 15px 35px rgba(37, 117, 252, 0.6);
+  }
+`;
 
 const HeroContainer = styled.div`
   display: flex;
@@ -107,7 +143,7 @@ const TextLoop = styled.div`
 
 const Span = styled.div`
   cursor: pointer;
-  color: coral;
+  color: #FFA07A;
   text-transform: uppercase;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 `;
@@ -135,26 +171,11 @@ const ResumeButton = styled.a`
   text-decoration: none;
 
   width: 95%;
-  max-width: 300px;
+  max-width: 130px;
   text-align: center;
-  padding: 16px 0;
-
-  background: hsla(271, 100%, 50%, 1);
-  background: linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
+  padding: 6px 0;
+background: linear-gradient(135deg, #6a11cb, #2575fc);
+color:white;
   border-radius: 50px;
   font-weight: 600;
   font-size: 20px;
@@ -175,7 +196,7 @@ const ResumeButton = styled.a`
 `;
 
 const Img = styled.img`
- border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  border-radius: 100%;
   width: 100%;
   height: 100%;
   max-width: 400px;
@@ -212,12 +233,19 @@ const HeroBg = styled.div`
   }
 `;
 
+const SocialIcons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+`;
+
 const Hero = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
   // const [loader, setLoading] = useState(false);
-  const {intro} = portfolioData;
-  const {name,description,roles,resume,profile_url} = intro;
-  
+  const { intro } = portfolioData;
+  const { name, description, roles, resume, profile_url } = intro;
+
   return (
     <div id="About">
       {loading ? <Spin_loader /> : null}
@@ -226,13 +254,13 @@ const Hero = () => {
           <StarCanvas />
           <HeroBgAnimation />
         </HeroBg>
-        
+
         <motion.div {...headContainerAnimation}>
           <HeroInnerContainer>
             <HeroLeftContainer>
               <motion.div {...headTextAnimation}>
                 <Title>
-                  Hi, I am <br /> {name || 'NA'}
+                  Hi, I am <br /> {name || "NA"}
                 </Title>
                 <TextLoop>
                   <Span>
@@ -248,26 +276,52 @@ const Hero = () => {
               </motion.div>
 
               <motion.div {...headContentAnimation}>
-                <SubTitle>{description  || 'NA'}</SubTitle>
+                <SubTitle>{description || "NA"}</SubTitle>
               </motion.div>
 
               <ResumeButton href={resume} target="_blank">
-               Resume
+                <DownloadIcon /> Resume
               </ResumeButton>
             </HeroLeftContainer>
+
             <HeroRightContainer>
               <motion.div {...headContentAnimation}>
-                <Tilt>
-                  <Img
-                    src={profile_url}
-                    alt="Santosh Pal"
-                  />
-                </Tilt>
+                  <Tilt>
+                    <Img src={profile_url} alt="Santosh Pal" />
+                  </Tilt>
+                              <SocialIcons>
+                <SocialLink
+                  href="https://www.linkedin.com/in/santosh-pal-6a171a1a3/"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedIn />
+                </SocialLink>
+
+                <SocialLink
+                  href="https://github.com/sptechguru"
+                  target="_blank"
+                  aria-label="GitHub"
+                >
+                  <GitHubIcon />
+                </SocialLink>
+
+                <SocialLink
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=santoshpal9816@gmail.com&su=Contact&body=Hello Santosh"
+                  target="_blank"
+                >
+                  <Email />
+                </SocialLink>
+              </SocialIcons>
               </motion.div>
+
+              {/* Social Media Icons */}
+  
             </HeroRightContainer>
           </HeroInnerContainer>
         </motion.div>
       </HeroContainer>
+      
     </div>
   );
 };

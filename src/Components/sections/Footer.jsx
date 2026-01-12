@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import {
+  Email,
   FacebookRounded,
   Instagram,
   LinkedIn,
   Twitter,
 } from "@mui/icons-material";
-import GitHubIcon from '@mui/icons-material/GitHub';
+import GitHubIcon from "@mui/icons-material/GitHub";
 import { useSelector } from "react-redux";
 
 const FooterContainer = styled.div`
@@ -64,7 +65,7 @@ const SocialMediaIcons = styled.div`
   display: flex;
   margin-top: 1rem;
 `;
-const SocialMediaIcon = styled.a`
+const SocialMediaIcon2 = styled.a`
   display: inline-block;
   margin: 0 1rem;
   font-size: 1.5rem;
@@ -74,6 +75,33 @@ const SocialMediaIcon = styled.a`
     color: ${({ theme }) => theme.primary};
   }
 `;
+
+const SocialMediaIcon = styled.a`
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 1rem;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+  svg {
+    font-size: 22px;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.1);
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    box-shadow: 0 15px 35px rgba(37, 117, 252, 0.6);
+  }
+`;
+
 const Copyright = styled.p`
   margin-top: 1.5rem;
   font-size: 0.9rem;
@@ -84,8 +112,8 @@ const Copyright = styled.p`
 const Footer = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
   // const [loader, setLoading] = useState(false);
-  const {intro} = portfolioData;
-  const {name,github,insta,linkedin,facebook} = intro;
+  const { intro } = portfolioData;
+  const { name, github, insta, linkedin, facebook } = intro;
   return (
     <FooterContainer>
       <FooterWrapper>
@@ -98,11 +126,15 @@ const Footer = () => {
           <NavLink href="#Education">Education</NavLink>
         </Nav>
         <SocialMediaIcons>
-          <SocialMediaIcon href={facebook} target="display">
-            <FacebookRounded />
+          <SocialMediaIcon
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=santoshpal9816@gmail.com&su=Contact&body=Hello Santosh"
+            target="_blank"
+          >
+            <Email />
           </SocialMediaIcon>
+
           <SocialMediaIcon href={github} target="display">
-          <GitHubIcon />
+            <GitHubIcon />
           </SocialMediaIcon>
           <SocialMediaIcon href={linkedin} target="display">
             <LinkedIn />
@@ -111,8 +143,12 @@ const Footer = () => {
             <Instagram />
           </SocialMediaIcon>
         </SocialMediaIcons>
-        <Copyright>© 2025 {name} All rights reserved. For inquiries, Contact 📧 santoshpal9816@gmail.com</Copyright>
+        <Copyright>
+          © 2026 {name} All rights reserved. For inquiries, Contact 📧
+          santoshpal9816@gmail.com
+        </Copyright>
       </FooterWrapper>
+
     </FooterContainer>
   );
 };

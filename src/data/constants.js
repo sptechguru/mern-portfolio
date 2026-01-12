@@ -364,8 +364,8 @@ export const baseLiveProject = [
   { name: 'Node js Crud Api', url: 'https://sptech-api-v1.onrender.com/' },
   { name: 'React js Movie', url: 'https://sptechreact.netlify.app/' },
   { name: 'React js Weather', url: 'https://sptectreactjs-weather.netlify.app/' },
-  { name: 'Angular 18', url: 'https://sptechguru.github.io/Angular18/login' },
-  { name: 'E-commerce', url: 'https://onlineguru.pythonanywhere.com/shop/' },
-  { name: 'Old-portfolio', url: 'https://sani.pythonanywhere.com/' }
+  // { name: 'Angular 18', url: 'https://sptechguru.github.io/Angular18/login' },
+  // { name: 'E-commerce', url: 'https://onlineguru.pythonanywhere.com/shop/' },
+  // { name: 'Old-portfolio', url: 'https://sani.pythonanywhere.com/' }
 ];
 
