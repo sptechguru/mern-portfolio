@@ -1,0 +1,39 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #0b032d;
+    background: linear-gradient(
+      38.73deg,
+      rgba(204, 0, 187, 0.15) 0%,
+      rgba(201, 32, 184, 0) 50%
+    ),
+  }
+  
+  .login-card {
+    width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    overflow-x: hidden !important;
+  }
+  
+  .title_gradient_text {
+    text-align: center;
+    margin-bottom: 20px;
+    background: radial-gradient(circle, #0056cb, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+  .title_gradient_text {
+    display: none;
+  }
+}
+  
