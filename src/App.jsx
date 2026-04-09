@@ -10,6 +10,7 @@ import Navbar from "./Components/Navbar";
 import ScrollToTopButton from "./Components/sections/ScrollToTopButton";
 import allRoutes from "./Routes/routes";
 import Spin_loader from "./Components/Spin-loader";
+import AIChatbot from "./Components/AI/AIChatbot";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,8 @@ const App = () => {
   return (
     <>
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-        <BrowserRouter>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <AIChatbot />
           <ScrollToTopButton />
          <Suspense fallback={ <Spin_loader /> }>
           <ConditionalNavbar theme={theme} toggleThemeControl={themeToggler} />

@@ -5,7 +5,6 @@ const Admin = lazy(() => import("../Components/sections/Admin"));
 const Login = lazy(() => import("../Components/sections/Admin/Login"));
 const Weather = lazy(() => import("../Components/Weather"));
 const PageNotFound = lazy(() => import("../Components/PageNotFound"));
-const OpenAi = lazy(() => import(".././Components/AI/OpenAi"));
 
 const allRoutes = [
     {
@@ -20,11 +19,6 @@ const allRoutes = [
         path: "/login",
         element: Login,
     },
-
-    // {
-    //     path: "/open-Ai",
-    //     element: OpenAi,
-    // },
 
     { path: "/admin-dashboard", element: Admin, protected: true },
 
