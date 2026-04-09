@@ -331,8 +331,8 @@ const AIChatbot = () => {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
-      content:
-        "Hey 👋 I'm Santosh's AI assistant. Ask me anything about his skills, projects, or experience!",
+      // content: [{ type: "text", text: "Hey 👋 I'm Santosh's AI assistant. Ask me anything about his skills, projects, or experience!" }],
+      content:"Hey 👋 I'm Santosh's AI assistant. Ask me anything about his skills, projects, or experience!",
       ts: new Date(),
     },
   ]);
@@ -368,8 +368,7 @@ const sendMessage = async (text) => {
       ...prev,
       {
         role: "assistant",
-        content:
-          "⚠️ Could not connect to server. Make sure Node.js backend is running on port 5000.",
+        content:"⚠️ Server error. Please try again later.",
         ts: new Date(),
       },
     ]);
