@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import axios from "axios";
 import { PORTFOLIOPOINTS } from "../../Api/Endpoints";
+import CloseIcon from "@mui/icons-material/Close";
 // ─── Animations ────────────────────────────────────────────────────────────────
 const fadeSlideUp = keyframes`
   from { opacity: 0; transform: translateY(24px) scale(0.96); }
@@ -184,7 +185,6 @@ const MsgAvatar = styled.div`
 `;
 
 const Bubble = styled.div`
-  max-width: 78%;
   padding: 10px 14px;
   border-radius: ${({ $isUser }) =>
     $isUser ? "18px 18px 4px 18px" : "18px 18px 18px 4px"};
@@ -319,20 +319,34 @@ const fmt = (d) =>
   d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
 const SUGGESTIONS = [
-  "Who are you?",
-  "Santosh's skills",
-  "Projects he built?",
-  "How to contact?",
+  "Projects",
+  "Skills",
+  "Experience",
+  "Companies",
+  "Tech Stack",
+  "Generative AI",
+  "Trending Tech",
+  "Microservices",
+  "React vs Angular"
 ];
 
 // ─── Main Component ─────────────────────────────────────────────────────────────
 const AIChatbot = () => {
+  const initialMessages = [
+    {
+      role: "assistant",
+      // content: [{ type: "text", text: "Hey 👋 I'm Santosh's AI assistant. Ask me anything about his skills, projects, or experience!" }],
+      content: "Hey 👋 I'm Santosh's AI assistant. Ask me anything about his skills, projects, or experience!",
+      ts: new Date(),
+    }
+  ]; // your initial state
   const [open, setOpen] = useState(false);
+
   const [messages, setMessages] = useState([
     {
       role: "assistant",
       // content: [{ type: "text", text: "Hey 👋 I'm Santosh's AI assistant. Ask me anything about his skills, projects, or experience!" }],
-      content:"Hey 👋 I'm Santosh's AI assistant. Ask me anything about his skills, projects, or experience!",
+      content: "Hey 👋 I'm Santosh's AI assistant. Ask me anything about his skills, projects, or experience!",
       ts: new Date(),
     },
   ]);
@@ -340,42 +354,52 @@ const AIChatbot = () => {
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef(null);
 
+  const toggleChat = () => {
+    setOpen((prev) => {
+      // 👉 if closing → reset messages
+      if (prev === true) {
+        setMessages(initialMessages);
+      }
+      return !prev;
+    });
+  };
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-const sendMessage = async (text) => {
-  const trimmed = text.trim();
-  if (!trimmed || loading) return;
-  const userMsg = { role: "user", content: trimmed, ts: new Date() };
-  const history = [...messages, userMsg];
-  setMessages(history);
-  setInput("");
-  setLoading(true);
-  try {
-    // Axios POST request
-    const res = await axios.post(`${PORTFOLIOPOINTS.ApiBaseUrl}ai-chatBoat`, {
-      messages: history.map(({ role, content }) => ({ role, content })),
-    });
-    const reply = res.data?.reply || "Sorry, I couldn't get a response.";
-    setMessages((prev) => [
-      ...prev,
-      { role: "assistant", content: reply, ts: new Date() },
-    ]);
-  } catch (error) {
-    console.error("API Error:", error);
-    setMessages((prev) => [
-      ...prev,
-      {
-        role: "assistant",
-        content:"⚠️ Server error. Please try again later.",
-        ts: new Date(),
-      },
-    ]);
-  } finally {
-    setLoading(false);
-  }
-};
+  const sendMessage = async (text) => {
+    const trimmed = text.trim();
+    if (!trimmed || loading) return;
+    const userMsg = { role: "user", content: trimmed, ts: new Date() };
+    const history = [...messages, userMsg];
+    setMessages(history);
+    setInput("");
+    setLoading(true);
+    try {
+      const res = await axios.post(`${PORTFOLIOPOINTS.ApiBaseUrl}ai-chatBoat`, {
+        messages: history.map(({ role, content }) => ({ role, content })),
+      });
+      const reply = res.data?.reply || "Sorry, I couldn't get a response.";
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: reply, ts: new Date() },
+      ]);
+    } catch (error) {
+      console.error("API Error:", error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: "⚠️ Server error. Please try again later.",
+          ts: new Date(),
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleKey = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -386,8 +410,8 @@ const sendMessage = async (text) => {
   return (
     <>
       {/* ── Floating Trigger Button ── */}
-      <FloatBtn onClick={() => setOpen((p) => !p)} title="Chat with AI">
-        {open ? "✕" : "💬"}
+      <FloatBtn onClick={toggleChat} title="Chat with AI">
+        {open ? <CloseIcon /> : "🤖"}
       </FloatBtn>
 
       {/* ── Chat Window ── */}
@@ -400,7 +424,7 @@ const sendMessage = async (text) => {
               <BotName>Santosh&apos;s AI</BotName>
               <StatusDot>Online</StatusDot>
             </HeaderInfo>
-            <CloseBtn onClick={() => setOpen(false)}>✕</CloseBtn>
+            <CloseBtn onClick={toggleChat}>✕</CloseBtn>
           </Header>
 
           {/* Messages */}
