@@ -209,3 +209,11 @@ input {
   display: flex;
   align-items: center;
 }
+
+.hide-wa #wa-widget-send-button {
+  display: none !important;
+}
+
+.hide-wa .gSvyQ {
+  display: none !important;
+}

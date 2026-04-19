@@ -67,7 +67,7 @@ const App = () => {
 
 const ConditionalNavbar = ({ theme, toggleThemeControl }) => {
   const location = useLocation();
-  const hideNavbarRoutes = ["/login", "/admin-dashboard"];
+  const hideNavbarRoutes = ["/login", "/admin-dashboard",'/weather', '/dv-travelers'];
   return !hideNavbarRoutes.includes(location.pathname) ? (
     <Navbar theme={theme} toggleThemeControl={toggleThemeControl} />
   ) : null;

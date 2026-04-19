@@ -5,6 +5,7 @@ const Admin = lazy(() => import("../Components/sections/Admin"));
 const Login = lazy(() => import("../Components/sections/Admin/Login"));
 const Weather = lazy(() => import("../Components/Weather"));
 const PageNotFound = lazy(() => import("../Components/PageNotFound"));
+const travelers = lazy(() => import("../Components/Tour-Travvels/Vihan"));
 
 const allRoutes = [
     {
@@ -15,6 +16,11 @@ const allRoutes = [
         path: "/weather",
         element: Weather,
     },
+    {
+        path: "/dv-travelers",
+        element: travelers,
+    },
+
     {
         path: "/login",
         element: Login,
